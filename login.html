@@ -1,1876 +1,1591 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Billing Control Center</title>
+<title>BillWise</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+/* =========================================================
+   RESET
+========================================================= */
 
-    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* =========================================================
-           BILLWISE CREAM + VIOLET THEME
-        ========================================================= */
+html {
+    width: 100%;
+    min-height: 100%;
+}
 
-        :root {
+body {
+    width: 100%;
+    min-height: 100vh;
 
-            /* Cream foundation */
-            --cream: #f7f1e8;
-            --cream-light: #fffdf8;
-            --cream-soft: #f2eadf;
-            --cream-deep: #e9dfd1;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-            /* Violet */
-            --violet: #76509a;
-            --violet-light: #9671b4;
-            --violet-dark: #543272;
-            --violet-soft: rgba(118, 80, 154, 0.12);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
 
-            /* Text */
-            --text: #302831;
-            --text-soft: #514750;
-            --muted: #81767f;
-            --muted-light: #a59ba2;
+    color: #29232d;
 
-            /* Borders */
-            --line: rgba(105, 68, 130, 0.13);
-            --line-strong: rgba(105, 68, 130, 0.22);
+    background: #f6f0e7;
+}
 
-            /* Cards */
-            --card: rgba(255, 253, 248, 0.92);
 
-        }
+/* =========================================================
+   MAIN SCENE
+========================================================= */
 
+.scene {
+    position: relative;
 
-        /* =========================================================
-           RESET
-        ========================================================= */
+    width: 100%;
+    min-height: 100vh;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    overflow: visible;
 
+    background:
 
-        html {
-            width: 100%;
-            min-height: 100%;
-        }
+        /* subtle violet glow only around decorative areas */
 
+        radial-gradient(
+            ellipse at 7% 8%,
+            rgba(125, 67, 155, 0.15),
+            transparent 30%
+        ),
 
-        body {
+        radial-gradient(
+            ellipse at 96% 10%,
+            rgba(112, 72, 157, 0.12),
+            transparent 28%
+        ),
 
-            min-height: 100vh;
+        radial-gradient(
+            ellipse at 84% 91%,
+            rgba(117, 69, 151, 0.10),
+            transparent 32%
+        ),
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #fbf7ef 0%,
-                    #f7f0e6 50%,
-                    #efe6da 100%
-                );
+        linear-gradient(
+            135deg,
+            #fbf7ef 0%,
+            #f7f0e6 52%,
+            #f1e8dc 100%
+        );
+}
 
-            color: var(--text);
 
-            font-family: "DM Sans", sans-serif;
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
+.container {
+    position: relative;
 
+    width: 100%;
+    min-height: 100vh;
 
+    overflow: visible;
 
-        /* =========================================================
-           MAIN GRID
-        ========================================================= */
+    border-radius:
+        0
+        34px
+        34px
+        0;
+}
 
-        .page {
 
-            min-height: 100vh;
+/* =========================================================
+   LARGE INNER OUTER PANEL
+   CREAM DOMINANT
+========================================================= */
 
-            display: grid;
+.container::before {
+    content: "";
 
-            grid-template-columns: 48% 52%;
-        }
+    position: absolute;
 
+    left: 6.8%;
+    right: 5.0%;
 
+    top: 12.5%;
+    bottom: 3.0%;
 
-        /* =========================================================
-           LEFT VISUAL AREA
-        ========================================================= */
+    min-height: 650px;
 
-        .visual-section {
+    z-index: 1;
 
-            position: relative;
+    border-radius:
+        10px
+        10px
+        62px
+        62px;
 
-            padding: 42px 52px;
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8 0%,
+            #faf5ec 48%,
+            #f4ecdf 100%
+        );
 
-            display: flex;
+    border:
+        1px solid rgba(113, 76, 137, 0.10);
 
-            flex-direction: column;
+    box-shadow:
 
-            justify-content: space-between;
+        0 32px 72px rgba(73, 52, 61, 0.13),
 
-            overflow: hidden;
+        0 13px 32px rgba(73, 52, 61, 0.08),
 
-            border-right:
-                1px solid var(--line);
+        inset 0 2px 2px rgba(255,255,255,0.90),
 
-            background-color:
-                #f7f0e6;
+        inset 0 -38px 58px rgba(115, 76, 130, 0.035),
 
-            background-image:
+        inset 0 0 95px rgba(118, 66, 145, 0.035);
+}
 
-                /* Violet glow */
 
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(118, 80, 154, 0.17),
-                    transparent 28%
-                ),
+/* =========================================================
+   INNER BORDER
+========================================================= */
 
-                radial-gradient(
-                    circle at 78% 80%,
-                    rgba(118, 80, 154, 0.09),
-                    transparent 25%
-                ),
+.container::after {
+    content: "";
 
-                /* subtle grid */
+    position: absolute;
 
-                linear-gradient(
-                    rgba(118, 80, 154, 0.045) 1px,
-                    transparent 1px
-                ),
+    left: 7.05%;
+    right: 5.25%;
 
-                linear-gradient(
-                    90deg,
-                    rgba(118, 80, 154, 0.045) 1px,
-                    transparent 1px
-                );
+    top: 12.8%;
+    bottom: 3.3%;
 
-            background-size:
-                auto,
-                auto,
-                32px 32px,
-                32px 32px;
-        }
+    min-height: 644px;
 
+    z-index: 2;
 
+    border-radius:
+        9px
+        9px
+        59px
+        59px;
 
-        /* =========================================================
-           DECORATIVE GLOW
-        ========================================================= */
+    border:
+        1px solid rgba(111, 72, 137, 0.08);
 
-        .glow-one {
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.8);
 
-            position: absolute;
+    pointer-events: none;
+}
 
-            width: 300px;
-            height: 300px;
 
-            border-radius: 50%;
+/* =========================================================
+   DECORATIVE GLASS SHAPES
+   THESE STAY VIOLET
+========================================================= */
 
-            background:
-                rgba(118, 80, 154, 0.14);
+.shape {
+    position: absolute;
 
-            filter:
-                blur(100px);
+    z-index: 3;
 
-            top: -120px;
-            left: -100px;
+    pointer-events: none;
+}
 
-            pointer-events: none;
-        }
 
+/* =========================================================
+   TOP RIGHT VIOLET PATTERN
+========================================================= */
 
-        .glow-two {
+.shape.one {
+    width: 430px;
+    height: 105px;
 
-            position: absolute;
+    right: -58px;
+    top: 8px;
 
-            width: 250px;
-            height: 250px;
+    border-radius: 75px;
 
-            border-radius: 50%;
+    transform: rotate(-47deg);
 
-            background:
-                rgba(118, 80, 154, 0.09);
+    background:
+        linear-gradient(
+            100deg,
+            rgba(112, 70, 145, 0.04),
+            rgba(128, 78, 163, 0.34),
+            rgba(101, 55, 132, 0.07)
+        );
 
-            filter:
-                blur(90px);
+    border:
+        1px solid rgba(103, 62, 132, 0.12);
 
-            bottom: -80px;
-            right: -80px;
+    box-shadow:
 
-            pointer-events: none;
-        }
+        inset 0 1px 2px rgba(255,255,255,0.45),
 
+        0 20px 42px rgba(91, 54, 115, 0.10);
 
+    backdrop-filter: blur(5px);
+}
 
-        /* =========================================================
-           BRAND
-        ========================================================= */
 
-        .brand {
+/* =========================================================
+   LEFT BOTTOM VIOLET DIAGONAL
+========================================================= */
 
-            position: relative;
+.shape.two {
+    width: 470px;
+    height: 78px;
 
-            z-index: 2;
+    left: -125px;
+    bottom: 65px;
 
-            display: flex;
+    transform: rotate(-47deg);
 
-            align-items: center;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100, 54, 127, 0.03),
+            rgba(120, 65, 148, 0.25),
+            rgba(91, 46, 116, 0.03)
+        );
+}
 
-            gap: 12px;
 
-            font-family:
-                "Syne",
-                sans-serif;
+/* =========================================================
+   RIGHT BOTTOM VIOLET PATTERN
+========================================================= */
 
-            font-size: 19px;
+.shape.three {
+    width: 88px;
+    height: 370px;
 
-            font-weight: 700;
+    right: -5px;
+    bottom: -130px;
 
-            letter-spacing:
-                -0.03em;
-        }
+    border-radius: 70px;
 
+    transform: rotate(24deg);
 
-        .brand-icon {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(103, 62, 139, 0.04),
+            rgba(122, 77, 158, 0.30),
+            rgba(84, 44, 111, 0.04)
+        );
 
-            width: 38px;
-            height: 38px;
+    border:
+        1px solid rgba(102, 62, 133, 0.10);
 
-            display: grid;
+    backdrop-filter: blur(5px);
+}
 
-            place-items: center;
 
-            border-radius: 11px;
+/* =========================================================
+   LEFT VIOLET CIRCLE
+========================================================= */
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--violet),
-                    var(--violet-dark)
-                );
+.shape.four {
+    width: 250px;
+    height: 250px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.35);
+    left: -118px;
+    top: 315px;
 
-            box-shadow:
+    border:
+        7px solid rgba(115, 63, 142, 0.18);
 
-                0 8px 22px
-                rgba(91, 50, 119, 0.22),
+    border-radius: 50%;
+}
 
-                inset 0 1px 1px
-                rgba(255,255,255,0.25);
-        }
 
+/* =========================================================
+   TOP VIOLET VERTICAL LINES
+========================================================= */
 
-        .brand-icon span {
+.shape.five {
+    width: 5px;
+    height: 190px;
 
-            font-size: 17px;
+    left: 30.8%;
+    top: -12px;
 
-            color:
-                #ffffff;
-        }
+    background:
+        rgba(119, 73, 146, 0.20);
 
+    box-shadow:
+        20px 0 0 rgba(91, 51, 119, 0.13);
+}
 
-        .brand-name {
 
-            color:
-                var(--text);
-        }
+/* =========================================================
+   CONTENT
+========================================================= */
 
+.content {
+    position: relative;
 
-        .brand-name em {
+    z-index: 10;
 
-            color:
-                var(--violet);
+    width: 100%;
 
-            font-style:
-                normal;
-        }
+    min-height: 100vh;
+}
 
 
+/* =========================================================
+   LEFT SIDE
+========================================================= */
 
-        /* =========================================================
-           HERO
-        ========================================================= */
+.welcome {
+    position: absolute;
 
-        .hero {
+    left: 14.5%;
+    top: 20%;
 
-            position: relative;
+    width: 39%;
 
-            z-index: 2;
+    z-index: 10;
+}
 
-            max-width: 600px;
-        }
 
+/* =========================================================
+   BILLWISE
+========================================================= */
 
-        .eyebrow {
+.brand {
+    font-size: 32px;
 
-            display: inline-flex;
+    line-height: 1;
 
-            align-items: center;
+    font-weight: 800;
 
-            gap: 9px;
+    letter-spacing: -1.2px;
 
-            margin-bottom: 22px;
+    margin-bottom: 96px;
 
-            padding:
-                7px 12px;
+    color: #34243d;
 
-            border-radius:
-                100px;
+    text-shadow:
+        0 2px 8px rgba(75, 52, 81, 0.10);
+}
 
-            border:
-                1px solid
-                rgba(118,80,154,0.20);
 
-            background:
-                rgba(118,80,154,0.07);
+/* =========================================================
+   WELCOME
+========================================================= */
 
-            color:
-                var(--violet-dark);
+.welcome h1 {
+    font-size: 68px;
 
-            font-size: 11px;
+    line-height: 1;
 
-            font-weight: 700;
+    font-weight: 750;
 
-            letter-spacing:
-                0.14em;
+    letter-spacing: -3px;
 
-            text-transform:
-                uppercase;
-        }
+    margin-bottom: 47px;
 
+    color: #29222c;
 
-        .eyebrow-dot {
+    text-shadow:
+        0 3px 12px rgba(80, 60, 75, 0.10);
+}
 
-            width: 6px;
-            height: 6px;
 
-            border-radius: 50%;
+/* =========================================================
+   LINE
+========================================================= */
 
-            background:
-                var(--violet);
+.small-line {
+    width: 48px;
+    height: 3px;
 
-            box-shadow:
-                0 0 10px
-                rgba(118,80,154,0.45);
-        }
+    margin-bottom: 38px;
 
+    background:
+        #76508d;
 
-        .hero h1 {
+    border-radius: 4px;
+}
 
-            font-family:
-                "Syne",
-                sans-serif;
 
-            font-size:
-                clamp(3.2rem, 5vw, 5.3rem);
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
-            line-height:
-                0.98;
+.welcome p {
+    width: 390px;
 
-            letter-spacing:
-                -0.065em;
+    font-size: 13px;
 
-            font-weight:
-                700;
+    line-height: 1.75;
 
-            margin-bottom:
-                26px;
+    color:
+        #756b72;
 
-            color:
-                var(--text);
-        }
+    margin-bottom: 36px;
+}
 
 
-        .hero h1 .violet {
+/* =========================================================
+   LEARN MORE
+========================================================= */
 
-            color:
-                var(--violet);
-        }
+.learn-btn {
+    height: 41px;
 
+    padding:
+        0 22px;
 
-        .hero h1 .gold {
+    border: none;
+    outline: none;
 
-            color:
-                var(--violet-dark);
-        }
+    border-radius: 9px;
 
+    color: #ffffff;
 
-        .hero-description {
+    font-size: 12px;
 
-            max-width:
-                500px;
+    font-weight: 700;
 
-            color:
-                var(--muted);
+    cursor: pointer;
 
-            font-size:
-                15px;
+    background:
+        linear-gradient(
+            135deg,
+            #76509a,
+            #5f397f
+        );
 
-            line-height:
-                1.8;
-        }
+    box-shadow:
+        0 8px 19px rgba(103, 66, 128, 0.22),
 
+        inset 0 1px 1px rgba(255,255,255,0.25);
 
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
-        /* =========================================================
-           ANALYTICS CARDS
-        ========================================================= */
+.learn-btn:hover {
+    transform:
+        translateY(-2px);
 
-        .analytics {
+    box-shadow:
+        0 12px 24px rgba(103, 66, 128, 0.28);
+}
 
-            position: relative;
 
-            z-index: 2;
+/* =========================================================
+   AUTH AREA
+========================================================= */
 
-            display: grid;
+.auth-area {
+    position: absolute;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+    left: 56.8%;
+    top: 23.8%;
 
-            gap: 12px;
+    width: 32.0%;
 
-            max-width:
-                640px;
-        }
+    z-index: 12;
 
+    padding-bottom: 40px;
+}
 
-        .stat-card {
 
-            padding:
-                18px;
+/* =========================================================
+   AUTH CARD
+   ELEGANT CREAM GLASS
+========================================================= */
 
-            min-height:
-                110px;
+.auth-card {
+    width: 100%;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.82),
-                    rgba(247,240,230,0.78)
-                );
+    position: relative;
 
-            border:
-                1px solid
-                var(--line);
+    padding:
+        38px
+        50px
+        28px;
 
-            border-radius:
-                15px;
+    border-radius: 18px;
 
-            box-shadow:
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.96),
+            rgba(249,243,234,0.94)
+        );
 
-                0 10px 28px
-                rgba(73,52,61,0.055),
+    border:
+        1px solid rgba(111, 75, 132, 0.13);
 
-                inset 0 1px 0
-                rgba(255,255,255,0.8);
+    box-shadow:
 
-            backdrop-filter:
-                blur(10px);
+        0 30px 60px rgba(67, 49, 58, 0.13),
 
-            transition:
-                0.3s ease;
-        }
+        0 10px 25px rgba(67, 49, 58, 0.07),
 
+        inset 0 1px 0 rgba(255,255,255,0.95),
 
-        .stat-card:hover {
+        inset 0 -22px 42px rgba(113, 72, 134, 0.025);
 
-            transform:
-                translateY(-4px);
+    backdrop-filter:
+        blur(18px);
 
-            border-color:
-                rgba(118,80,154,0.35);
+    -webkit-backdrop-filter:
+        blur(18px);
+}
 
-            box-shadow:
 
-                0 15px 35px
-                rgba(73,52,61,0.10),
+/* =========================================================
+   SMALL VIOLET ACCENT ON CARD
+========================================================= */
 
-                0 0 25px
-                rgba(118,80,154,0.06);
-        }
+.auth-card::before {
+    content: "";
 
+    position: absolute;
 
-        .stat-label {
+    top: 0;
+    left: 12%;
 
-            color:
-                var(--muted);
+    width: 76%;
+    height: 2px;
 
-            font-size:
-                11px;
+    border-radius: 10px;
 
-            text-transform:
-                uppercase;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(118, 75, 148, 0.65),
+            transparent
+        );
+}
 
-            letter-spacing:
-                0.1em;
 
-            margin-bottom:
-                15px;
-        }
+/* =========================================================
+   FORMS
+========================================================= */
 
+.form {
+    display: none;
+}
 
-        .stat-value {
+.form.active {
+    display: block;
+}
 
-            font-family:
-                "Syne",
-                sans-serif;
 
-            font-size:
-                22px;
+/* =========================================================
+   FORM TITLE
+========================================================= */
 
-            font-weight:
-                700;
+.auth-card h2 {
+    text-align: center;
 
-            color:
-                var(--text);
-        }
+    font-size: 37px;
 
+    line-height: 1;
 
-        .stat-value.gold {
+    font-weight: 750;
 
-            color:
-                var(--violet);
-        }
+    letter-spacing: -1px;
 
+    margin-bottom: 22px;
 
-        .stat-value.violet {
+    color: #32283a;
 
-            color:
-                var(--violet);
-        }
+    text-shadow:
+        0 2px 8px rgba(77, 57, 82, 0.08);
+}
 
 
-        .stat-status {
+/* =========================================================
+   SUBTITLE
+========================================================= */
 
-            margin-top:
-                5px;
+.credentials-title {
+    text-align: center;
 
-            font-size:
-                10px;
+    font-size: 11px;
 
-            color:
-                var(--muted);
-        }
+    color:
+        #887c85;
 
+    margin-bottom: 21px;
+}
 
 
-        /* =========================================================
-           LEFT FOOTER
-        ========================================================= */
+/* =========================================================
+   FIELD
+========================================================= */
 
-        .visual-footer {
+.field {
+    margin-bottom: 17px;
+}
 
-            position:
-                relative;
 
-            z-index:
-                2;
+/* =========================================================
+   LABEL
+========================================================= */
 
-            display:
-                flex;
+.field label {
+    display: block;
 
-            justify-content:
-                space-between;
+    font-size: 12px;
 
-            color:
-                #9a8f97;
+    line-height: 1;
 
-            font-size:
-                11px;
+    font-weight: 700;
 
-            letter-spacing:
-                0.03em;
-        }
+    margin-bottom: 9px;
 
+    color:
+        #403641;
+}
 
 
-        /* =========================================================
-           RIGHT SECTION
-        ========================================================= */
+/* =========================================================
+   INPUT
+========================================================= */
 
-        .control-section {
+.field input {
+    display: block;
 
-            position:
-                relative;
+    width: 100%;
+    height: 39px;
 
-            display:
-                flex;
+    padding:
+        0 17px;
 
-            align-items:
-                flex-start;
+    border:
+        1px solid rgba(105, 75, 116, 0.13);
 
-            justify-content:
-                center;
+    outline: none;
 
-            min-height:
-                100vh;
+    border-radius: 22px;
 
-            padding:
-                45px;
+    color: #352c38;
 
-            overflow:
-                hidden;
+    font-size: 12px;
 
-            background:
+    background:
+        linear-gradient(
+            180deg,
+            #f8f3eb,
+            #f3ece2
+        );
 
-                radial-gradient(
-                    circle at 85% 15%,
-                    rgba(118,80,154,0.12),
-                    transparent 30%
-                ),
+    box-shadow:
+        inset 0 2px 7px rgba(77, 58, 70, 0.035);
 
-                radial-gradient(
-                    circle at 15% 90%,
-                    rgba(118,80,154,0.06),
-                    transparent 25%
-                ),
+    transition:
+        0.2s ease;
+}
 
-                linear-gradient(
-                    135deg,
-                    #f8f2e9,
-                    #f1e8dc
-                );
-        }
+.field input::placeholder {
+    color:
+        #a49aa1;
+}
 
+.field input:focus {
+    background:
+        #fffdf9;
 
+    border-color:
+        rgba(113, 70, 143, 0.40);
 
-        /* =========================================================
-           RIGHT SIDE GRID
-        ========================================================= */
+    box-shadow:
 
-        .control-section::before {
+        0 0 0 3px rgba(118, 76, 147, 0.08),
 
-            content:
-                "";
+        inset 0 2px 7px rgba(77, 58, 70, 0.035);
+}
 
-            position:
-                absolute;
 
-            inset:
-                0;
+/* =========================================================
+   FORGOT
+========================================================= */
 
-            background-image:
+.forgot {
+    display: block;
 
-                linear-gradient(
-                    rgba(118,80,154,0.045) 1px,
-                    transparent 1px
-                ),
+    text-align: right;
 
-                linear-gradient(
-                    90deg,
-                    rgba(118,80,154,0.045) 1px,
-                    transparent 1px
-                );
+    margin-top: -2px;
+    margin-bottom: 17px;
 
-            background-size:
-                36px 36px;
+    font-size: 10px;
 
-            pointer-events:
-                none;
-        }
+    color:
+        #76508d;
 
+    text-decoration: none;
 
+    font-weight: 600;
+}
 
-        /* =========================================================
-           BILLING PANEL
-        ========================================================= */
+.forgot:hover {
+    color:
+        #4f3168;
+}
 
-        .billing-panel {
 
-            position:
-                relative;
+/* =========================================================
+   SUBMIT
+   MAIN VIOLET BUTTON
+========================================================= */
 
-            z-index:
-                2;
+.submit-btn {
+    width: 100%;
+    height: 40px;
 
-            width:
-                100%;
+    margin-top: 5px;
 
-            max-width:
-                520px;
+    border: none;
+    outline: none;
 
-            padding:
-                38px;
+    border-radius: 22px;
 
-            border-radius:
-                25px;
+    color: #ffffff;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,253,248,0.97),
-                    rgba(247,240,231,0.95)
-                );
+    font-size: 12px;
 
-            border:
-                1px solid
-                rgba(105,68,130,0.16);
+    font-weight: 700;
 
-            box-shadow:
+    cursor: pointer;
 
-                0 35px 80px
-                rgba(73,52,61,0.13),
+    background:
+        linear-gradient(
+            100deg,
+            #8055a1 0%,
+            #623b82 100%
+        );
 
-                0 0 60px
-                rgba(118,80,154,0.07),
+    box-shadow:
 
-                inset 0 1px 0
-                rgba(255,255,255,0.95);
+        0 8px 18px rgba(99, 60, 128, 0.24),
 
-            backdrop-filter:
-                blur(20px);
-        }
+        inset 0 1px 1px rgba(255,255,255,0.25);
 
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
+.submit-btn:hover {
+    transform:
+        translateY(-1px);
 
-        /* =========================================================
-           TOP VIOLET LINE
-        ========================================================= */
+    box-shadow:
+        0 11px 22px rgba(99, 60, 128, 0.31);
+}
 
-        .billing-panel::before {
 
-            content:
-                "";
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
 
-            position:
-                absolute;
+.google-btn {
+    width: 100%;
+    height: 40px;
 
-            top:
-                0;
+    margin-top: 12px;
 
-            left:
-                15%;
+    border:
+        1px solid rgba(91, 66, 102, 0.13);
 
-            right:
-                15%;
+    outline: none;
 
-            height:
-                2px;
+    border-radius: 22px;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--violet),
-                    var(--violet-light),
-                    transparent
-                );
-        }
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
+    gap: 10px;
 
-        /* =========================================================
-           PANEL HEADER
-        ========================================================= */
+    color:
+        #4c424d;
 
-        .panel-top {
+    font-size: 12px;
 
-            display:
-                flex;
+    font-weight: 600;
 
-            justify-content:
-                space-between;
+    cursor: pointer;
 
-            align-items:
-                flex-start;
+    background:
+        rgba(255,255,255,0.70);
 
-            margin-bottom:
-                32px;
-        }
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.85);
 
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
 
-        .panel-label {
+.google-btn:hover {
+    background:
+        #ffffff;
 
-            color:
-                var(--violet);
+    border-color:
+        rgba(103, 65, 128, 0.25);
 
-            font-size:
-                10px;
+    transform:
+        translateY(-1px);
+}
 
-            text-transform:
-                uppercase;
 
-            letter-spacing:
-                0.16em;
+/* =========================================================
+   GOOGLE G
+========================================================= */
 
-            font-weight:
-                700;
+.google-icon {
+    width: 17px;
+    height: 17px;
 
-            margin-bottom:
-                9px;
-        }
+    display: flex;
 
+    align-items: center;
+    justify-content: center;
 
-        .panel-title {
+    border-radius: 50%;
 
-            font-family:
-                "Syne",
-                sans-serif;
+    background: #ffffff;
 
-            font-size:
-                27px;
+    color: #4285f4;
 
-            letter-spacing:
-                -0.045em;
+    font-size: 12px;
 
-            font-weight:
-                700;
+    font-weight: 800;
 
-            color:
-                var(--text);
-        }
+    font-family: Arial, sans-serif;
 
+    box-shadow:
+        0 1px 4px rgba(0,0,0,0.08);
+}
 
-        .invoice-icon {
 
-            width:
-                42px;
+/* =========================================================
+   SOCIAL
+========================================================= */
 
-            height:
-                42px;
+.social {
+    display: flex;
 
-            display:
-                grid;
+    justify-content: center;
+    align-items: center;
 
-            place-items:
-                center;
+    gap: 20px;
 
-            border-radius:
-                12px;
+    margin-top: 19px;
+}
 
-            color:
-                var(--violet);
+.social span {
+    font-size: 20px;
 
-            background:
-                rgba(118,80,154,0.08);
+    line-height: 1;
 
-            border:
-                1px solid
-                rgba(118,80,154,0.17);
+    color:
+        #76508d;
 
-            font-size:
-                17px;
+    opacity: 0.92;
 
-            box-shadow:
-                inset 0 1px 0
-                rgba(255,255,255,0.8);
-        }
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
 
+.social span:hover {
+    transform:
+        translateY(-2px);
 
-        .panel-subtitle {
+    color:
+        #4f3168;
+}
 
-            margin-top:
-                7px;
 
-            color:
-                var(--muted);
+/* =========================================================
+   SWITCH
+========================================================= */
 
-            font-size:
-                13px;
+.switch-text {
+    text-align: center;
 
-            line-height:
-                1.6;
-        }
+    margin-top: 14px;
 
+    font-size: 10px;
 
+    color:
+        #887c85;
+}
 
-        /* =========================================================
-           BILLING SUMMARY
-        ========================================================= */
+.switch-btn {
+    border: none;
+    background: none;
 
-        .billing-summary {
+    padding: 0;
 
-            display:
-                grid;
+    color:
+        #684583;
 
-            grid-template-columns:
-                1fr 1fr;
+    font-size: 10px;
 
-            gap:
-                10px;
+    font-weight: 700;
 
-            margin-bottom:
-                28px;
-        }
+    cursor: pointer;
 
+    text-decoration: underline;
+}
 
-        .summary-box {
+.switch-btn:hover {
+    color:
+        #43295a;
+}
 
-            padding:
-                15px;
 
-            border-radius:
-                13px;
+/* =========================================================
+   MESSAGE
+========================================================= */
 
-            background:
-                rgba(118,80,154,0.045);
+.message {
+    display: none;
 
-            border:
-                1px solid
-                rgba(105,68,130,0.10);
+    text-align: center;
 
-            box-shadow:
-                inset 0 1px 0
-                rgba(255,255,255,0.75);
-        }
+    margin-top: 10px;
 
+    font-size: 10px;
 
-        .summary-box small {
+    color:
+        #76508d;
+}
 
-            display:
-                block;
 
-            color:
-                var(--muted);
+/* =========================================================
+   REGISTER FORM
+========================================================= */
 
-            font-size:
-                10px;
+#registerForm h2 {
+    font-size: 35px;
 
-            text-transform:
-                uppercase;
+    margin-bottom: 18px;
+}
 
-            letter-spacing:
-                0.1em;
+#registerForm .credentials-title {
+    margin-bottom: 20px;
+}
 
-            margin-bottom:
-                7px;
-        }
+#registerForm .field {
+    margin-bottom: 14px;
+}
 
+#registerForm .field label {
+    margin-bottom: 8px;
+}
 
-        .summary-box strong {
+#registerForm .field input {
+    height: 38px;
+}
 
-            font-family:
-                "Syne",
-                sans-serif;
+#registerForm .submit-btn {
+    margin-top: 6px;
+}
 
-            font-size:
-                15px;
+#registerForm .social {
+    margin-top: 16px;
+}
 
-            color:
-                var(--text);
-        }
+#registerForm .switch-text {
+    margin-top: 11px;
+}
 
 
+/* =========================================================
+   SHORT SCREEN
+========================================================= */
 
-        /* =========================================================
-           FORM
-        ========================================================= */
+@media (max-height: 800px) and (min-width: 851px) {
 
-        .field {
+    .scene {
+        min-height: 900px;
+    }
 
-            margin-bottom:
-                19px;
-        }
+    .container {
+        min-height: 900px;
+    }
 
+    .content {
+        min-height: 900px;
+    }
 
-        .field label {
+    .container::before {
+        min-height: 790px;
+        bottom: 30px;
+    }
 
-            display:
-                block;
+    .container::after {
+        min-height: 784px;
+        bottom: 33px;
+    }
 
-            margin-bottom:
-                8px;
+    .welcome {
+        top: 18%;
+    }
 
-            color:
-                var(--text-soft);
+    .auth-area {
+        top: 19%;
+        padding-bottom: 70px;
+    }
+}
 
-            font-size:
-                11px;
 
-            font-weight:
-                600;
+/* =========================================================
+   TABLET
+========================================================= */
 
-            letter-spacing:
-                0.07em;
+@media (max-width: 850px) {
 
-            text-transform:
-                uppercase;
-        }
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 
+    .scene {
+        min-height: 100vh;
+        height: auto;
+    }
 
-        .input-wrap {
+    .container {
+        min-height: 100vh;
+        height: auto;
+    }
 
-            position:
-                relative;
-        }
+    .container::before {
+        position: absolute;
 
+        left: 5%;
+        right: 5%;
 
-        .input-wrap .symbol {
+        top: 35px;
+        bottom: 35px;
 
-            position:
-                absolute;
+        min-height: 1100px;
 
-            left:
-                14px;
+        border-radius:
+            18px
+            18px
+            50px
+            50px;
+    }
 
-            top:
-                50%;
+    .container::after {
+        left: 5.3%;
+        right: 5.3%;
 
-            transform:
-                translateY(-50%);
+        top: 38px;
+        bottom: 38px;
 
-            color:
-                var(--violet);
+        min-height: 1094px;
+    }
 
-            font-size:
-                13px;
+    .content {
+        min-height: 1200px;
+    }
 
-            pointer-events:
-                none;
+    .welcome {
+        position: relative;
 
-            z-index:
-                2;
-        }
+        left: auto;
+        top: auto;
 
+        width: 100%;
 
-        input {
+        padding:
+            80px
+            9%
+            30px;
+    }
 
-            width:
-                100%;
+    .brand {
+        margin-bottom: 60px;
+    }
 
-            height:
-                50px;
+    .welcome h1 {
+        font-size: 60px;
+    }
 
-            padding:
-                0 15px 0 40px;
+    .auth-area {
+        position: relative;
 
-            border-radius:
-                12px;
+        left: auto;
+        top: auto;
 
-            outline:
-                none;
+        width: 100%;
 
-            border:
-                1px solid
-                rgba(105,68,130,0.13);
+        padding:
+            25px
+            8%
+            100px;
+    }
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #f8f3eb,
-                    #f3ece2
-                );
+    .auth-card {
+        width: min(100%, 450px);
 
-            color:
-                var(--text);
+        margin: 0 auto;
+    }
+}
 
-            font-family:
-                "DM Sans",
-                sans-serif;
 
-            font-size:
-                13px;
+/* =========================================================
+   MOBILE
+========================================================= */
 
-            box-shadow:
-                inset 0 2px 7px
-                rgba(77,58,70,0.025);
+@media (max-width: 480px) {
 
-            transition:
-                0.25s ease;
-        }
+    .container::before {
+        min-height: 1130px;
 
+        left: 4%;
+        right: 4%;
+    }
 
-        input::placeholder {
+    .container::after {
+        min-height: 1124px;
 
-            color:
-                #a49aa1;
-        }
+        left: 4.3%;
+        right: 4.3%;
+    }
 
+    .content {
+        min-height: 1230px;
+    }
 
-        input:focus {
+    .welcome {
+        padding:
+            55px
+            30px
+            20px;
+    }
 
-            border-color:
-                rgba(118,80,154,0.45);
+    .brand {
+        font-size: 28px;
 
-            background:
-                #fffdf9;
+        margin-bottom: 50px;
+    }
 
-            box-shadow:
+    .welcome h1 {
+        font-size: 48px;
 
-                0 0 0 3px
-                rgba(118,80,154,0.08),
+        letter-spacing: -2px;
 
-                0 0 25px
-                rgba(118,80,154,0.07),
+        margin-bottom: 35px;
+    }
 
-                inset 0 2px 7px
-                rgba(77,58,70,0.025);
-        }
+    .welcome p {
+        width: 100%;
 
+        font-size: 12px;
+    }
 
+    .auth-area {
+        padding:
+            20px
+            20px
+            80px;
+    }
 
-        /* =========================================================
-           PLAN SELECTOR
-        ========================================================= */
+    .auth-card {
+        width: 100%;
 
-        .plan-title {
+        padding:
+            32px
+            25px
+            27px;
+    }
 
-            color:
-                var(--text-soft);
+    .auth-card h2 {
+        font-size: 32px;
+    }
+}
 
-            font-size:
-                11px;
-
-            font-weight:
-                600;
-
-            letter-spacing:
-                0.07em;
-
-            text-transform:
-                uppercase;
-
-            margin-bottom:
-                9px;
-        }
-
-
-        .plans {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:
-                8px;
-
-            margin-bottom:
-                23px;
-        }
-
-
-        .plan {
-
-            cursor:
-                pointer;
-
-            padding:
-                12px;
-
-            border-radius:
-                11px;
-
-            border:
-                1px solid
-                rgba(105,68,130,0.12);
-
-            background:
-                rgba(255,255,255,0.52);
-
-            transition:
-                0.25s ease;
-        }
-
-
-        .plan:hover {
-
-            border-color:
-                rgba(118,80,154,0.35);
-
-            background:
-                rgba(118,80,154,0.045);
-        }
-
-
-        .plan.active {
-
-            border-color:
-                rgba(118,80,154,0.50);
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(118,80,154,0.14),
-                    rgba(118,80,154,0.045)
-                );
-
-            box-shadow:
-
-                inset 0 0 20px
-                rgba(118,80,154,0.045),
-
-                0 5px 15px
-                rgba(118,80,154,0.06);
-        }
-
-
-        .plan-name {
-
-            display:
-                block;
-
-            color:
-                var(--muted);
-
-            font-size:
-                10px;
-
-            margin-bottom:
-                5px;
-        }
-
-
-        .plan-price {
-
-            font-family:
-                "Syne",
-                sans-serif;
-
-            color:
-                var(--text);
-
-            font-size:
-                14px;
-
-            font-weight:
-                600;
-        }
-
-
-
-        /* =========================================================
-           ACTION BUTTON
-           MAIN BILLWISE VIOLET
-        ========================================================= */
-
-        .continue-btn {
-
-            width:
-                100%;
-
-            height:
-                53px;
-
-            border:
-                none;
-
-            border-radius:
-                12px;
-
-            cursor:
-                pointer;
-
-            font-family:
-                "Syne",
-                sans-serif;
-
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-
-            color:
-                #ffffff;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #8056a1,
-                    #623b82
-                );
-
-            box-shadow:
-
-                0 10px 30px
-                rgba(99,60,128,0.22),
-
-                inset 0 1px 1px
-                rgba(255,255,255,0.25);
-
-            transition:
-                0.3s ease;
-        }
-
-
-        .continue-btn:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-
-                0 14px 35px
-                rgba(99,60,128,0.28),
-
-                0 0 30px
-                rgba(118,80,154,0.10);
-        }
-
-
-        .continue-btn:active {
-
-            transform:
-                translateY(0);
-        }
-
-
-
-        /* =========================================================
-           SECURITY NOTE
-        ========================================================= */
-
-        .security-note {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            gap:
-                7px;
-
-            margin-top:
-                17px;
-
-            color:
-                #8c8189;
-
-            font-size:
-                10px;
-        }
-
-
-        .security-note span {
-
-            color:
-                var(--violet);
-        }
-
-
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media(max-width: 1000px) {
-
-            body {
-                overflow: auto;
-            }
-
-            .page {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-            .visual-section {
-
-                min-height:
-                    500px;
-            }
-
-            .control-section {
-
-                min-height:
-                    700px;
-            }
-        }
-
-
-        @media(max-width: 1000px) {
-
-            .control-section {
-
-                min-height:
-                    auto;
-
-                padding-top:
-                    40px;
-
-                padding-bottom:
-                    40px;
-            }
-        }
-
-
-        @media(max-width: 600px) {
-
-            .visual-section {
-
-                padding:
-                    30px 24px;
-            }
-
-
-            .control-section {
-
-                padding:
-                    25px 18px;
-            }
-
-
-            .billing-panel {
-
-                padding:
-                    27px 21px;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    3rem;
-            }
-
-
-            .analytics {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .plans {
-
-                grid-template-columns:
-                    1fr;
-            }
-        }
-
-    </style>
+</style>
 </head>
 
 
 <body>
 
-<div class="page">
+<div class="scene">
+
+    <div class="container">
+
+        <!-- BACKGROUND SHAPES -->
+
+        <div class="shape one"></div>
+        <div class="shape two"></div>
+        <div class="shape three"></div>
+        <div class="shape four"></div>
+        <div class="shape five"></div>
 
 
-    <!-- =========================================================
-         LEFT SIDE
-    ========================================================= -->
-
-    <section class="visual-section">
-
-        <div class="glow-one"></div>
-        <div class="glow-two"></div>
+        <div class="content">
 
 
-        <!-- BRAND -->
+            <!-- =====================================================
+                 LEFT SIDE
+            ====================================================== -->
 
-        <div class="brand">
+            <section class="welcome">
 
-            <div class="brand-icon">
-                <span>✦</span>
-            </div>
-
-            <div class="brand-name">
-                Bill<em>Wise</em>
-            </div>
-
-        </div>
-
-
-        <!-- HERO -->
-
-        <div class="hero">
-
-            <div class="eyebrow">
-
-                <span class="eyebrow-dot"></span>
-
-                Smart Billing Infrastructure
-
-            </div>
-
-
-            <h1>
-
-                One place for
-                <span class="violet">every</span>
-                <span class="gold">billing cycle.</span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                Organize plans, monitor recurring revenue,
-                manage customer billing and keep every
-                payment cycle moving without the clutter.
-
-            </p>
-
-        </div>
-
-
-        <!-- ANALYTICS -->
-
-        <div class="analytics">
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Monthly Revenue
+                <div class="brand">
+                    BillWise
                 </div>
 
-                <div class="stat-value gold">
-                    ₹84.6K
-                </div>
-
-                <div class="stat-status">
-                    ↑ 12.8% this cycle
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Active Plans
-                </div>
-
-                <div class="stat-value violet">
-                    1,284
-                </div>
-
-                <div class="stat-status">
-                    Across all tiers
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Collection Rate
-                </div>
-
-                <div class="stat-value">
-                    98.7%
-                </div>
-
-                <div class="stat-status">
-                    Payments processed
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- FOOTER -->
-
-        <div class="visual-footer">
-
-            <span>
-                BILLWISE / FINANCE SYSTEM
-            </span>
-
-            <span>
-                2026
-            </span>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         RIGHT SIDE
-    ========================================================= -->
-
-    <section class="control-section">
-
-
-        <div class="billing-panel">
-
-
-            <!-- HEADER -->
-
-            <div class="panel-top">
-
-                <div>
-
-                    <div class="panel-label">
-                        Billing Workspace
-                    </div>
-
-                    <div class="panel-title">
-                        Set up your account
-                    </div>
-
-                    <p class="panel-subtitle">
-                        Enter your details to configure
-                        your billing workspace.
-                    </p>
-
-                </div>
-
-
-                <div class="invoice-icon">
-                    ◇
-                </div>
-
-            </div>
-
-
-
-            <!-- SUMMARY -->
-
-            <div class="billing-summary">
-
-
-                <div class="summary-box">
-
-                    <small>
-                        Billing status
-                    </small>
-
-                    <strong>
-                        Ready
-                    </strong>
-
-                </div>
-
-
-                <div class="summary-box">
-
-                    <small>
-                        Invoice cycle
-                    </small>
-
-                    <strong>
-                        Monthly
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FORM -->
-
-            <form id="billingForm">
-
-
-                <!-- USERNAME -->
-
-                <div class="field">
-
-                    <label for="username">
-                        Username
-                    </label>
-
-                    <div class="input-wrap">
-
-                        <span class="symbol">
-                            ◉
-                        </span>
-
-                        <input
-                            type="text"
-                            id="username"
-                            placeholder="Choose a username"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- EMAIL -->
-
-                <div class="field">
-
-                    <label for="email">
-                        Email address
-                    </label>
-
-                    <div class="input-wrap">
-
-                        <span class="symbol">
-                            @
-                        </span>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="you@example.com"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PASSWORD -->
-
-                <div class="field">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <div class="input-wrap">
-
-                        <span class="symbol">
-                            ◆
-                        </span>
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Create your password"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- RE-ENTER PASSWORD -->
-
-                <div class="field">
-
-                    <label for="confirmPassword">
-                        Re-enter password
-                    </label>
-
-                    <div class="input-wrap">
-
-                        <span class="symbol">
-                            ◆
-                        </span>
-
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Enter your password again"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PLAN -->
-
-                <div class="plan-title">
-                    Choose billing tier
-                </div>
-
-
-                <div class="plans">
-
-
-                    <div
-                        class="plan"
-                        onclick="selectPlan(this)"
-                    >
-
-                        <span class="plan-name">
-                            Starter
-                        </span>
-
-                        <span class="plan-price">
-                            ₹499 / mo
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="plan active"
-                        onclick="selectPlan(this)"
-                    >
-
-                        <span class="plan-name">
-                            Growth
-                        </span>
-
-                        <span class="plan-price">
-                            ₹1,299 / mo
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="plan"
-                        onclick="selectPlan(this)"
-                    >
-
-                        <span class="plan-name">
-                            Scale
-                        </span>
-
-                        <span class="plan-price">
-                            ₹2,499 / mo
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- BUTTON -->
+                <h1>
+                    Welcome!
+                </h1>
+
+                <div class="small-line"></div>
+
+                <p>
+                    Manage your bills smarter with BillWise.
+                    Keep track of payments, organize expenses,
+                    and stay financially informed — all in one place.
+                </p>
 
                 <button
-                    type="submit"
-                    class="continue-btn"
+                    type="button"
+                    class="learn-btn"
+                    onclick="learnMore()"
                 >
-
-                    Continue to Billing →
-
+                    Learn More
                 </button>
 
-
-            </form>
-
+            </section>
 
 
-            <!-- SECURITY -->
 
-            <div class="security-note">
+            <!-- =====================================================
+                 AUTH AREA
+            ====================================================== -->
 
-                <span>✦</span>
+            <section class="auth-area">
 
-                Your billing information is protected
-                with secure account controls.
+                <div class="auth-card">
 
-            </div>
 
+                    <!-- =================================================
+                         LOGIN
+                    ================================================== -->
+
+                    <form
+                        id="loginForm"
+                        class="form active"
+                    >
+
+                        <h2>
+                            Sign in
+                        </h2>
+
+                        <div class="credentials-title">
+                            Enter your credentials to continue
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="field">
+
+                            <label for="loginEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="field">
+
+                            <label for="loginPassword">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- FORGOT PASSWORD -->
+
+                        <a
+                            href="#"
+                            class="forgot"
+                            onclick="forgotPassword(event)"
+                        >
+                            Forgot password?
+                        </a>
+
+
+                        <!-- NORMAL LOGIN -->
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
+                            Submit
+                        </button>
+
+
+                        <!-- GOOGLE LOGIN -->
+
+                        <button
+                            type="button"
+                            class="google-btn"
+                            onclick="loginWithGoogle()"
+                        >
+
+                            <span class="google-icon">
+                                G
+                            </span>
+
+                            <span>
+                                Continue with Google
+                            </span>
+
+                        </button>
+
+
+                        <!-- SOCIAL -->
+
+                        <div class="social">
+                            <span>f</span>
+                            <span>◎</span>
+                            <span>p</span>
+                        </div>
+
+
+                        <!-- SWITCH -->
+
+                        <p class="switch-text">
+
+                            Don't have an account?
+
+                            <button
+                                type="button"
+                                class="switch-btn"
+                                onclick="showRegister()"
+                            >
+                                Create Account
+                            </button>
+
+                        </p>
+
+
+                        <div
+                            id="loginMessage"
+                            class="message"
+                        ></div>
+
+                    </form>
+
+
+
+                    <!-- =================================================
+                         CREATE ACCOUNT
+                    ================================================== -->
+
+                    <form
+                        id="registerForm"
+                        class="form"
+                    >
+
+                        <h2>
+                            Create Account
+                        </h2>
+
+                        <div class="credentials-title">
+                            Enter your details to get started
+                        </div>
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="field">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="field">
+
+                            <label for="registerEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CONTACT NUMBER -->
+
+                        <div class="field">
+
+                            <label for="contact">
+                                Contact Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="contact"
+                                placeholder="Enter contact number"
+                                maxlength="10"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="field">
+
+                            <label for="registerPassword">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="field">
+
+                            <label for="confirmPassword">
+                                Confirm Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CREATE ACCOUNT -->
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
+                            Create Account
+                        </button>
+
+
+                        <!-- SOCIAL -->
+
+                        <div class="social">
+                            <span>f</span>
+                            <span>◎</span>
+                            <span>p</span>
+                        </div>
+
+
+                        <!-- SWITCH TO LOGIN -->
+
+                        <p class="switch-text">
+
+                            Already have an account?
+
+                            <button
+                                type="button"
+                                class="switch-btn"
+                                onclick="showLogin()"
+                            >
+                                Sign In
+                            </button>
+
+                        </p>
+
+
+                        <div
+                            id="registerMessage"
+                            class="message"
+                        ></div>
+
+                    </form>
+
+                </div>
+
+            </section>
 
         </div>
 
-    </section>
+    </div>
 
 </div>
 
@@ -1878,90 +1593,290 @@
 
 <script>
 
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-    /* =========================================================
-       PLAN SELECTION
-    ========================================================= */
+const loginForm =
+    document.getElementById("loginForm");
 
-    function selectPlan(selected) {
+const registerForm =
+    document.getElementById("registerForm");
 
-        document
-            .querySelectorAll(".plan")
-            .forEach(plan => {
 
-                plan.classList.remove("active");
+/* =========================================================
+   SHOW REGISTER
+========================================================= */
 
+function showRegister() {
+
+    loginForm.classList.remove("active");
+
+    registerForm.classList.add("active");
+
+
+    setTimeout(() => {
+
+        const card =
+            document.querySelector(".auth-card");
+
+        if (
+            window.innerWidth <= 850 ||
+            document.documentElement.scrollHeight >
+            window.innerHeight
+        ) {
+
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
             });
 
+        }
 
-        selected.classList.add("active");
+    }, 50);
+}
 
+
+/* =========================================================
+   SHOW LOGIN
+========================================================= */
+
+function showLogin() {
+
+    registerForm.classList.remove("active");
+
+    loginForm.classList.add("active");
+
+}
+
+
+/* =========================================================
+   NORMAL LOGIN
+========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document
+            .getElementById("loginEmail")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("loginPassword")
+            .value;
+
+        const message =
+            document.getElementById(
+                "loginMessage"
+            );
+
+
+        if (!email || !password) {
+
+            message.style.display = "block";
+
+            message.textContent =
+                "Please fill in all fields.";
+
+            return;
+        }
+
+
+        message.style.display = "block";
+
+        message.textContent =
+            "Sign in successful!";
+    }
+);
+
+
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+function loginWithGoogle() {
+
+    const message =
+        document.getElementById(
+            "loginMessage"
+        );
+
+    message.style.display = "block";
+
+    message.textContent =
+        "Google login will be connected to your authentication service.";
+
+}
+
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
+registerForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+        const email =
+            document
+            .getElementById("registerEmail")
+            .value
+            .trim();
+
+        const contact =
+            document
+            .getElementById("contact")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("registerPassword")
+            .value;
+
+        const confirmPassword =
+            document
+            .getElementById("confirmPassword")
+            .value;
+
+        const message =
+            document.getElementById(
+                "registerMessage"
+            );
+
+
+        /* EMPTY FIELDS */
+
+        if (
+            !name ||
+            !email ||
+            !contact ||
+            !password ||
+            !confirmPassword
+        ) {
+
+            message.style.display = "block";
+
+            message.textContent =
+                "Please fill in all fields.";
+
+            return;
+        }
+
+
+        /* PASSWORD LENGTH */
+
+        if (password.length < 6) {
+
+            message.style.display = "block";
+
+            message.textContent =
+                "Password must contain at least 6 characters.";
+
+            return;
+        }
+
+
+        /* PASSWORD MATCH */
+
+        if (password !== confirmPassword) {
+
+            message.style.display = "block";
+
+            message.textContent =
+                "Passwords do not match.";
+
+            return;
+        }
+
+
+        /* CONTACT */
+
+        if (!/^[0-9]{10}$/.test(contact)) {
+
+            message.style.display = "block";
+
+            message.textContent =
+                "Enter a valid 10-digit contact number.";
+
+            return;
+        }
+
+
+        /* SUCCESS */
+
+        message.style.display = "block";
+
+        message.textContent =
+            "Account created successfully!";
+
+    }
+);
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+    const email =
+        document
+        .getElementById("loginEmail")
+        .value
+        .trim();
+
+
+    if (!email) {
+
+        alert(
+            "Enter your email first to reset your password."
+        );
+
+        return;
     }
 
 
-
-    /* =========================================================
-       FORM ACTION
-    ========================================================= */
-
-    document
-        .getElementById("billingForm")
-        .addEventListener(
-            "submit",
-            function(event) {
-
-                event.preventDefault();
+    alert(
+        "Password reset will be connected to your backend."
+    );
+}
 
 
-                const username =
-                    document
-                    .getElementById("username")
-                    .value
-                    .trim();
+/* =========================================================
+   LEARN MORE
+========================================================= */
 
+function learnMore() {
 
-                const email =
-                    document
-                    .getElementById("email")
-                    .value
-                    .trim();
+    alert(
+        "BillWise helps you manage bills, payments and expenses in one place."
+    );
 
-
-                const password =
-                    document
-                    .getElementById("password")
-                    .value;
-
-
-                const confirmPassword =
-                    document
-                    .getElementById("confirmPassword")
-                    .value;
-
-
-                if (
-                    password !==
-                    confirmPassword
-                ) {
-
-                    alert(
-                        "Passwords do not match."
-                    );
-
-                    return;
-
-                }
-
-
-                alert(
-                    "Billing workspace created for " +
-                    username
-                );
-
-            }
-        );
+}
 
 </script>
 
 </body>
 </html>
+
+
+
+
