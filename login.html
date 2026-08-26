@@ -14,26 +14,43 @@
 
     <style>
 
+        /* =========================================================
+           BILLWISE CREAM + VIOLET THEME
+        ========================================================= */
+
         :root {
-            --black: #07050b;
-            --black-soft: #0d0914;
 
-            --violet: #8b5cf6;
-            --violet-light: #a78bfa;
-            --violet-dark: #5b21b6;
+            /* Cream foundation */
+            --cream: #f7f1e8;
+            --cream-light: #fffdf8;
+            --cream-soft: #f2eadf;
+            --cream-deep: #e9dfd1;
 
-            --gold: #f5c451;
-            --gold-light: #fde68a;
+            /* Violet */
+            --violet: #76509a;
+            --violet-light: #9671b4;
+            --violet-dark: #543272;
+            --violet-soft: rgba(118, 80, 154, 0.12);
 
-            --white: #f8f7ff;
-            --muted: #9993aa;
+            /* Text */
+            --text: #302831;
+            --text-soft: #514750;
+            --muted: #81767f;
+            --muted-light: #a59ba2;
 
-            --line: rgba(167, 139, 250, 0.13);
-            --line-gold: rgba(245, 196, 81, 0.18);
+            /* Borders */
+            --line: rgba(105, 68, 130, 0.13);
+            --line-strong: rgba(105, 68, 130, 0.22);
 
-            --card: rgba(18, 13, 29, 0.86);
+            /* Cards */
+            --card: rgba(255, 253, 248, 0.92);
+
         }
 
+
+        /* =========================================================
+           RESET
+        ========================================================= */
 
         * {
             margin: 0;
@@ -42,10 +59,25 @@
         }
 
 
+        html {
+            width: 100%;
+            min-height: 100%;
+        }
+
+
         body {
+
             min-height: 100vh;
-            background: var(--black);
-            color: var(--white);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fbf7ef 0%,
+                    #f7f0e6 50%,
+                    #efe6da 100%
+                );
+
+            color: var(--text);
 
             font-family: "DM Sans", sans-serif;
 
@@ -54,20 +86,25 @@
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            MAIN GRID
-        ========================================= */
+        ========================================================= */
 
         .page {
+
             min-height: 100vh;
+
             display: grid;
+
             grid-template-columns: 48% 52%;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            LEFT VISUAL AREA
-        ========================================= */
+        ========================================================= */
 
         .visual-section {
 
@@ -76,37 +113,45 @@
             padding: 42px 52px;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: space-between;
 
             overflow: hidden;
 
-            border-right: 1px solid var(--line);
+            border-right:
+                1px solid var(--line);
 
-            background-color: #08060d;
+            background-color:
+                #f7f0e6;
 
             background-image:
 
+                /* Violet glow */
+
                 radial-gradient(
                     circle at 20% 20%,
-                    rgba(139, 92, 246, 0.22),
+                    rgba(118, 80, 154, 0.17),
                     transparent 28%
                 ),
 
                 radial-gradient(
-                    circle at 75% 78%,
-                    rgba(245, 196, 81, 0.12),
+                    circle at 78% 80%,
+                    rgba(118, 80, 154, 0.09),
                     transparent 25%
                 ),
 
+                /* subtle grid */
+
                 linear-gradient(
-                    rgba(139, 92, 246, 0.07) 1px,
+                    rgba(118, 80, 154, 0.045) 1px,
                     transparent 1px
                 ),
 
                 linear-gradient(
                     90deg,
-                    rgba(139, 92, 246, 0.07) 1px,
+                    rgba(118, 80, 154, 0.045) 1px,
                     transparent 1px
                 );
 
@@ -118,9 +163,13 @@
         }
 
 
-        /* Decorative glow */
+
+        /* =========================================================
+           DECORATIVE GLOW
+        ========================================================= */
 
         .glow-one {
+
             position: absolute;
 
             width: 300px;
@@ -128,9 +177,11 @@
 
             border-radius: 50%;
 
-            background: rgba(139, 92, 246, 0.18);
+            background:
+                rgba(118, 80, 154, 0.14);
 
-            filter: blur(100px);
+            filter:
+                blur(100px);
 
             top: -120px;
             left: -100px;
@@ -140,6 +191,7 @@
 
 
         .glow-two {
+
             position: absolute;
 
             width: 250px;
@@ -147,9 +199,11 @@
 
             border-radius: 50%;
 
-            background: rgba(245, 196, 81, 0.1);
+            background:
+                rgba(118, 80, 154, 0.09);
 
-            filter: blur(90px);
+            filter:
+                blur(90px);
 
             bottom: -80px;
             right: -80px;
@@ -158,24 +212,33 @@
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            BRAND
-        ========================================= */
+        ========================================================= */
 
         .brand {
+
             position: relative;
+
             z-index: 2;
 
             display: flex;
+
             align-items: center;
+
             gap: 12px;
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
             font-size: 19px;
+
             font-weight: 700;
 
-            letter-spacing: -0.03em;
+            letter-spacing:
+                -0.03em;
         }
 
 
@@ -185,6 +248,7 @@
             height: 38px;
 
             display: grid;
+
             place-items: center;
 
             border-radius: 11px;
@@ -196,37 +260,55 @@
                     var(--violet-dark)
                 );
 
-            border: 1px solid rgba(255,255,255,0.15);
+            border:
+                1px solid
+                rgba(255,255,255,0.35);
 
             box-shadow:
-                0 0 25px rgba(139, 92, 246, 0.35);
+
+                0 8px 22px
+                rgba(91, 50, 119, 0.22),
+
+                inset 0 1px 1px
+                rgba(255,255,255,0.25);
         }
 
 
         .brand-icon span {
+
             font-size: 17px;
-            color: var(--gold-light);
+
+            color:
+                #ffffff;
         }
 
 
         .brand-name {
-            color: white;
+
+            color:
+                var(--text);
         }
 
 
         .brand-name em {
-            color: var(--gold);
-            font-style: normal;
+
+            color:
+                var(--violet);
+
+            font-style:
+                normal;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            HERO
-        ========================================= */
+        ========================================================= */
 
         .hero {
 
             position: relative;
+
             z-index: 2;
 
             max-width: 600px;
@@ -238,27 +320,36 @@
             display: inline-flex;
 
             align-items: center;
+
             gap: 9px;
 
             margin-bottom: 22px;
 
-            padding: 7px 12px;
+            padding:
+                7px 12px;
 
-            border-radius: 100px;
+            border-radius:
+                100px;
 
-            border: 1px solid var(--line-gold);
+            border:
+                1px solid
+                rgba(118,80,154,0.20);
 
-            background: rgba(245, 196, 81, 0.06);
+            background:
+                rgba(118,80,154,0.07);
 
-            color: var(--gold-light);
+            color:
+                var(--violet-dark);
 
             font-size: 11px;
 
-            font-weight: 600;
+            font-weight: 700;
 
-            letter-spacing: 0.14em;
+            letter-spacing:
+                0.14em;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
         }
 
 
@@ -269,730 +360,1008 @@
 
             border-radius: 50%;
 
-            background: var(--gold);
+            background:
+                var(--violet);
 
             box-shadow:
-                0 0 10px var(--gold);
+                0 0 10px
+                rgba(118,80,154,0.45);
         }
 
 
         .hero h1 {
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            font-size: clamp(3.2rem, 5vw, 5.3rem);
+            font-size:
+                clamp(3.2rem, 5vw, 5.3rem);
 
-            line-height: 0.98;
+            line-height:
+                0.98;
 
-            letter-spacing: -0.065em;
+            letter-spacing:
+                -0.065em;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            margin-bottom: 26px;
+            margin-bottom:
+                26px;
+
+            color:
+                var(--text);
         }
 
 
         .hero h1 .violet {
-            color: var(--violet-light);
+
+            color:
+                var(--violet);
         }
 
 
         .hero h1 .gold {
 
-            background:
-                linear-gradient(
-                    120deg,
-                    var(--gold),
-                    var(--gold-light)
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color:
+                var(--violet-dark);
         }
 
 
         .hero-description {
 
-            max-width: 500px;
+            max-width:
+                500px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 15px;
+            font-size:
+                15px;
 
-            line-height: 1.8;
+            line-height:
+                1.8;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            ANALYTICS CARDS
-        ========================================= */
+        ========================================================= */
 
         .analytics {
 
             position: relative;
+
             z-index: 2;
 
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
 
             gap: 12px;
 
-            max-width: 640px;
+            max-width:
+                640px;
         }
 
 
         .stat-card {
 
-            padding: 18px;
+            padding:
+                18px;
 
-            min-height: 110px;
+            min-height:
+                110px;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(139, 92, 246, 0.09),
-                    rgba(10, 7, 15, 0.6)
+                    rgba(255,255,255,0.82),
+                    rgba(247,240,230,0.78)
                 );
 
-            border: 1px solid var(--line);
+            border:
+                1px solid
+                var(--line);
 
-            border-radius: 15px;
+            border-radius:
+                15px;
 
-            backdrop-filter: blur(10px);
+            box-shadow:
 
-            transition: 0.3s ease;
+                0 10px 28px
+                rgba(73,52,61,0.055),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.8);
+
+            backdrop-filter:
+                blur(10px);
+
+            transition:
+                0.3s ease;
         }
 
 
         .stat-card:hover {
 
-            transform: translateY(-4px);
+            transform:
+                translateY(-4px);
 
             border-color:
-                rgba(167, 139, 250, 0.4);
+                rgba(118,80,154,0.35);
 
             box-shadow:
-                0 15px 35px rgba(0,0,0,0.3);
+
+                0 15px 35px
+                rgba(73,52,61,0.10),
+
+                0 0 25px
+                rgba(118,80,154,0.06);
         }
 
 
         .stat-label {
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            letter-spacing: 0.1em;
+            letter-spacing:
+                0.1em;
 
-            margin-bottom: 15px;
+            margin-bottom:
+                15px;
         }
 
 
         .stat-value {
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            font-size: 22px;
+            font-size:
+                22px;
 
-            font-weight: 700;
+            font-weight:
+                700;
+
+            color:
+                var(--text);
         }
 
 
         .stat-value.gold {
-            color: var(--gold);
+
+            color:
+                var(--violet);
         }
 
 
         .stat-value.violet {
-            color: var(--violet-light);
+
+            color:
+                var(--violet);
         }
 
 
         .stat-status {
 
-            margin-top: 5px;
+            margin-top:
+                5px;
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            color: #a9a1b8;
+            color:
+                var(--muted);
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            LEFT FOOTER
-        ========================================= */
+        ========================================================= */
 
         .visual-footer {
 
-            position: relative;
-            z-index: 2;
+            position:
+                relative;
 
-            display: flex;
+            z-index:
+                2;
 
-            justify-content: space-between;
+            display:
+                flex;
 
-            color: #625c70;
+            justify-content:
+                space-between;
 
-            font-size: 11px;
+            color:
+                #9a8f97;
 
-            letter-spacing: 0.03em;
+            font-size:
+                11px;
+
+            letter-spacing:
+                0.03em;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            RIGHT SECTION
-        ========================================= */
+        ========================================================= */
 
         .control-section {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: flex-start;
+            align-items:
+                flex-start;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            min-height: 100vh;
+            min-height:
+                100vh;
 
-            padding: 45px;
+            padding:
+                45px;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
 
                 radial-gradient(
                     circle at 85% 15%,
-                    rgba(139, 92, 246, 0.13),
+                    rgba(118,80,154,0.12),
                     transparent 30%
                 ),
 
                 radial-gradient(
                     circle at 15% 90%,
-                    rgba(245, 196, 81, 0.06),
+                    rgba(118,80,154,0.06),
                     transparent 25%
                 ),
 
-                #09070d;
+                linear-gradient(
+                    135deg,
+                    #f8f2e9,
+                    #f1e8dc
+                );
         }
 
 
-        /* Right-side grid */
+
+        /* =========================================================
+           RIGHT SIDE GRID
+        ========================================================= */
 
         .control-section::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            inset: 0;
+            inset:
+                0;
 
             background-image:
 
                 linear-gradient(
-                    rgba(139, 92, 246, 0.045) 1px,
+                    rgba(118,80,154,0.045) 1px,
                     transparent 1px
                 ),
 
                 linear-gradient(
                     90deg,
-                    rgba(139, 92, 246, 0.045) 1px,
+                    rgba(118,80,154,0.045) 1px,
                     transparent 1px
                 );
 
-            background-size: 36px 36px;
+            background-size:
+                36px 36px;
 
-            pointer-events: none;
+            pointer-events:
+                none;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            BILLING PANEL
-        ========================================= */
+        ========================================================= */
 
         .billing-panel {
 
-            position: relative;
+            position:
+                relative;
 
-            z-index: 2;
+            z-index:
+                2;
 
-            width: 100%;
-            max-width: 520px;
+            width:
+                100%;
 
-            padding: 38px;
+            max-width:
+                520px;
 
-            border-radius: 25px;
+            padding:
+                38px;
+
+            border-radius:
+                25px;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(23, 16, 35, 0.96),
-                    rgba(11, 8, 17, 0.94)
+                    rgba(255,253,248,0.97),
+                    rgba(247,240,231,0.95)
                 );
 
-            border: 1px solid
-                rgba(167, 139, 250, 0.2);
+            border:
+                1px solid
+                rgba(105,68,130,0.16);
 
             box-shadow:
 
-                0 35px 80px rgba(0,0,0,0.6),
+                0 35px 80px
+                rgba(73,52,61,0.13),
 
                 0 0 60px
-                    rgba(139, 92, 246, 0.08);
+                rgba(118,80,154,0.07),
 
-            backdrop-filter: blur(20px);
+                inset 0 1px 0
+                rgba(255,255,255,0.95);
+
+            backdrop-filter:
+                blur(20px);
         }
 
 
-        /* top line */
+
+        /* =========================================================
+           TOP VIOLET LINE
+        ========================================================= */
 
         .billing-panel::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: 0;
-            left: 15%;
-            right: 15%;
+            top:
+                0;
 
-            height: 2px;
+            left:
+                15%;
+
+            right:
+                15%;
+
+            height:
+                2px;
 
             background:
                 linear-gradient(
                     90deg,
                     transparent,
                     var(--violet),
-                    var(--gold),
+                    var(--violet-light),
                     transparent
                 );
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            PANEL HEADER
-        ========================================= */
+        ========================================================= */
 
         .panel-top {
 
-            display: flex;
+            display:
+                flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: flex-start;
+            align-items:
+                flex-start;
 
-            margin-bottom: 32px;
+            margin-bottom:
+                32px;
         }
 
 
         .panel-label {
 
-            color: var(--gold);
+            color:
+                var(--violet);
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            letter-spacing: 0.16em;
+            letter-spacing:
+                0.16em;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            margin-bottom: 9px;
+            margin-bottom:
+                9px;
         }
 
 
         .panel-title {
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            font-size: 27px;
+            font-size:
+                27px;
 
-            letter-spacing: -0.045em;
+            letter-spacing:
+                -0.045em;
 
-            font-weight: 700;
+            font-weight:
+                700;
+
+            color:
+                var(--text);
         }
 
 
         .invoice-icon {
 
-            width: 42px;
-            height: 42px;
+            width:
+                42px;
 
-            display: grid;
-            place-items: center;
+            height:
+                42px;
 
-            border-radius: 12px;
+            display:
+                grid;
 
-            color: var(--gold);
+            place-items:
+                center;
+
+            border-radius:
+                12px;
+
+            color:
+                var(--violet);
 
             background:
-                rgba(245,196,81,0.07);
+                rgba(118,80,154,0.08);
 
             border:
-                1px solid var(--line-gold);
+                1px solid
+                rgba(118,80,154,0.17);
 
-            font-size: 17px;
+            font-size:
+                17px;
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.8);
         }
 
 
         .panel-subtitle {
 
-            margin-top: 7px;
+            margin-top:
+                7px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            line-height: 1.6;
+            line-height:
+                1.6;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            BILLING SUMMARY
-        ========================================= */
+        ========================================================= */
 
         .billing-summary {
 
-            display: grid;
+            display:
+                grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                1fr 1fr;
 
-            gap: 10px;
+            gap:
+                10px;
 
-            margin-bottom: 28px;
+            margin-bottom:
+                28px;
         }
 
 
         .summary-box {
 
-            padding: 15px;
+            padding:
+                15px;
 
-            border-radius: 13px;
+            border-radius:
+                13px;
 
-            background: rgba(255,255,255,0.025);
+            background:
+                rgba(118,80,154,0.045);
 
-            border: 1px solid rgba(255,255,255,0.06);
+            border:
+                1px solid
+                rgba(105,68,130,0.10);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255,255,255,0.75);
         }
 
 
         .summary-box small {
 
-            display: block;
+            display:
+                block;
 
-            color: #777080;
+            color:
+                var(--muted);
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            letter-spacing: 0.1em;
+            letter-spacing:
+                0.1em;
 
-            margin-bottom: 7px;
+            margin-bottom:
+                7px;
         }
 
 
         .summary-box strong {
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            font-size: 15px;
+            font-size:
+                15px;
 
-            color: #eeeaf7;
+            color:
+                var(--text);
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            FORM
-        ========================================= */
+        ========================================================= */
 
         .field {
 
-            margin-bottom: 19px;
+            margin-bottom:
+                19px;
         }
 
 
         .field label {
 
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 8px;
+            margin-bottom:
+                8px;
 
-            color: #c9c1d7;
+            color:
+                var(--text-soft);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
-            letter-spacing: 0.07em;
+            letter-spacing:
+                0.07em;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
         }
 
 
         .input-wrap {
 
-            position: relative;
+            position:
+                relative;
         }
 
 
         .input-wrap .symbol {
 
-            position: absolute;
+            position:
+                absolute;
 
-            left: 14px;
+            left:
+                14px;
 
-            top: 50%;
+            top:
+                50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
-            color: var(--violet-light);
+            color:
+                var(--violet);
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            pointer-events: none;
+            pointer-events:
+                none;
+
+            z-index:
+                2;
         }
 
 
         input {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 50px;
+            height:
+                50px;
 
             padding:
                 0 15px 0 40px;
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
-            outline: none;
+            outline:
+                none;
 
-            border: 1px solid
-                rgba(167,139,250,0.14);
+            border:
+                1px solid
+                rgba(105,68,130,0.13);
 
             background:
-                rgba(4,3,7,0.65);
+                linear-gradient(
+                    180deg,
+                    #f8f3eb,
+                    #f3ece2
+                );
 
-            color: white;
+            color:
+                var(--text);
 
-            font-family: "DM Sans", sans-serif;
+            font-family:
+                "DM Sans",
+                sans-serif;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            transition: 0.25s ease;
+            box-shadow:
+                inset 0 2px 7px
+                rgba(77,58,70,0.025);
+
+            transition:
+                0.25s ease;
         }
 
 
         input::placeholder {
-            color: #514b5b;
+
+            color:
+                #a49aa1;
         }
 
 
         input:focus {
 
             border-color:
-                rgba(245,196,81,0.55);
+                rgba(118,80,154,0.45);
 
             background:
-                rgba(12,8,20,0.85);
+                #fffdf9;
 
             box-shadow:
+
                 0 0 0 3px
-                rgba(245,196,81,0.05),
+                rgba(118,80,154,0.08),
 
                 0 0 25px
-                rgba(139,92,246,0.08);
+                rgba(118,80,154,0.07),
+
+                inset 0 2px 7px
+                rgba(77,58,70,0.025);
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            PLAN SELECTOR
-        ========================================= */
+        ========================================================= */
 
         .plan-title {
 
-            color: #c9c1d7;
+            color:
+                var(--text-soft);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 600;
+            font-weight:
+                600;
 
-            letter-spacing: 0.07em;
+            letter-spacing:
+                0.07em;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            margin-bottom: 9px;
+            margin-bottom:
+                9px;
         }
 
 
         .plans {
 
-            display: grid;
+            display:
+                grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
 
-            gap: 8px;
+            gap:
+                8px;
 
-            margin-bottom: 23px;
+            margin-bottom:
+                23px;
         }
 
 
         .plan {
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            padding: 12px;
+            padding:
+                12px;
 
-            border-radius: 11px;
+            border-radius:
+                11px;
 
-            border: 1px solid
-                rgba(167,139,250,0.12);
+            border:
+                1px solid
+                rgba(105,68,130,0.12);
 
             background:
-                rgba(255,255,255,0.02);
+                rgba(255,255,255,0.52);
 
-            transition: 0.25s ease;
+            transition:
+                0.25s ease;
         }
 
 
         .plan:hover {
 
             border-color:
-                rgba(167,139,250,0.35);
+                rgba(118,80,154,0.35);
+
+            background:
+                rgba(118,80,154,0.045);
         }
 
 
         .plan.active {
 
             border-color:
-                rgba(245,196,81,0.55);
+                rgba(118,80,154,0.50);
 
             background:
                 linear-gradient(
                     135deg,
-                    rgba(139,92,246,0.16),
-                    rgba(245,196,81,0.05)
+                    rgba(118,80,154,0.14),
+                    rgba(118,80,154,0.045)
                 );
 
             box-shadow:
+
                 inset 0 0 20px
-                rgba(139,92,246,0.05);
+                rgba(118,80,154,0.045),
+
+                0 5px 15px
+                rgba(118,80,154,0.06);
         }
 
 
         .plan-name {
 
-            display: block;
+            display:
+                block;
 
-            color: #aaa2b7;
+            color:
+                var(--muted);
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            margin-bottom: 5px;
+            margin-bottom:
+                5px;
         }
 
 
         .plan-price {
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            color: white;
+            color:
+                var(--text);
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            font-weight: 600;
+            font-weight:
+                600;
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            ACTION BUTTON
-        ========================================= */
+           MAIN BILLWISE VIOLET
+        ========================================================= */
 
         .continue-btn {
 
-            width: 100%;
+            width:
+                100%;
 
-            height: 53px;
+            height:
+                53px;
 
-            border: none;
+            border:
+                none;
 
-            border-radius: 12px;
+            border-radius:
+                12px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            font-family: "Syne", sans-serif;
+            font-family:
+                "Syne",
+                sans-serif;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            font-weight: 700;
+            font-weight:
+                700;
 
-            color: #0a0710;
+            color:
+                #ffffff;
 
             background:
                 linear-gradient(
                     100deg,
-                    var(--gold),
-                    var(--gold-light)
+                    #8056a1,
+                    #623b82
                 );
 
             box-shadow:
-                0 10px 30px
-                rgba(245,196,81,0.16);
 
-            transition: 0.3s ease;
+                0 10px 30px
+                rgba(99,60,128,0.22),
+
+                inset 0 1px 1px
+                rgba(255,255,255,0.25);
+
+            transition:
+                0.3s ease;
         }
 
 
         .continue-btn:hover {
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
 
             box-shadow:
+
                 0 14px 35px
-                rgba(245,196,81,0.28),
+                rgba(99,60,128,0.28),
 
                 0 0 30px
-                rgba(139,92,246,0.12);
+                rgba(118,80,154,0.10);
         }
 
 
         .continue-btn:active {
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            SECURITY NOTE
-        ========================================= */
+        ========================================================= */
 
         .security-note {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            gap: 7px;
+            gap:
+                7px;
 
-            margin-top: 17px;
+            margin-top:
+                17px;
 
-            color: #625c6d;
+            color:
+                #8c8189;
 
-            font-size: 10px;
+            font-size:
+                10px;
         }
 
 
         .security-note span {
-            color: var(--gold);
+
+            color:
+                var(--violet);
         }
 
 
-        /* =========================================
+
+        /* =========================================================
            RESPONSIVE
-        ========================================= */
+        ========================================================= */
 
         @media(max-width: 1000px) {
 
@@ -1001,15 +1370,21 @@
             }
 
             .page {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
 
             .visual-section {
-                min-height: 500px;
+
+                min-height:
+                    500px;
             }
 
             .control-section {
-                min-height: 700px;
+
+                min-height:
+                    700px;
             }
         }
 
@@ -1017,9 +1392,15 @@
         @media(max-width: 1000px) {
 
             .control-section {
-                min-height: auto;
-                padding-top: 40px;
-                padding-bottom: 40px;
+
+                min-height:
+                    auto;
+
+                padding-top:
+                    40px;
+
+                padding-bottom:
+                    40px;
             }
         }
 
@@ -1027,27 +1408,44 @@
         @media(max-width: 600px) {
 
             .visual-section {
-                padding: 30px 24px;
+
+                padding:
+                    30px 24px;
             }
+
 
             .control-section {
-                padding: 25px 18px;
+
+                padding:
+                    25px 18px;
             }
+
 
             .billing-panel {
-                padding: 27px 21px;
+
+                padding:
+                    27px 21px;
             }
+
 
             .hero h1 {
-                font-size: 3rem;
+
+                font-size:
+                    3rem;
             }
+
 
             .analytics {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
 
+
             .plans {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
             }
         }
 
@@ -1060,9 +1458,9 @@
 <div class="page">
 
 
-    <!-- =========================================
+    <!-- =========================================================
          LEFT SIDE
-    ========================================= -->
+    ========================================================= -->
 
     <section class="visual-section">
 
@@ -1079,7 +1477,7 @@
             </div>
 
             <div class="brand-name">
-                Bill<em>Flow</em>
+                Bill<em>Wise</em>
             </div>
 
         </div>
@@ -1090,22 +1488,29 @@
         <div class="hero">
 
             <div class="eyebrow">
+
                 <span class="eyebrow-dot"></span>
-                Recurring Revenue Infrastructure
+
+                Smart Billing Infrastructure
+
             </div>
 
 
             <h1>
+
                 One place for
                 <span class="violet">every</span>
                 <span class="gold">billing cycle.</span>
+
             </h1>
 
 
             <p class="hero-description">
+
                 Organize plans, monitor recurring revenue,
                 manage customer billing and keep every
                 payment cycle moving without the clutter.
+
             </p>
 
         </div>
@@ -1114,6 +1519,7 @@
         <!-- ANALYTICS -->
 
         <div class="analytics">
+
 
             <div class="stat-card">
 
@@ -1173,7 +1579,7 @@
         <div class="visual-footer">
 
             <span>
-                BILLFLOW / FINANCE SYSTEM
+                BILLWISE / FINANCE SYSTEM
             </span>
 
             <span>
@@ -1186,9 +1592,9 @@
 
 
 
-    <!-- =========================================
+    <!-- =========================================================
          RIGHT SIDE
-    ========================================= -->
+    ========================================================= -->
 
     <section class="control-section">
 
@@ -1229,6 +1635,7 @@
             <!-- SUMMARY -->
 
             <div class="billing-summary">
+
 
                 <div class="summary-box">
 
@@ -1439,7 +1846,9 @@
                     type="submit"
                     class="continue-btn"
                 >
+
                     Continue to Billing →
+
                 </button>
 
 
@@ -1470,9 +1879,9 @@
 <script>
 
 
-    /* =========================================
+    /* =========================================================
        PLAN SELECTION
-    ========================================= */
+    ========================================================= */
 
     function selectPlan(selected) {
 
@@ -1491,47 +1900,66 @@
 
 
 
-    /* =========================================
+    /* =========================================================
        FORM ACTION
-    ========================================= */
+    ========================================================= */
 
     document
         .getElementById("billingForm")
-        .addEventListener("submit", function(event) {
+        .addEventListener(
+            "submit",
+            function(event) {
 
-            event.preventDefault();
-
-
-            const username =
-                document.getElementById("username").value.trim();
+                event.preventDefault();
 
 
-            const email =
-                document.getElementById("email").value.trim();
+                const username =
+                    document
+                    .getElementById("username")
+                    .value
+                    .trim();
 
 
-            const password =
-                document.getElementById("password").value;
+                const email =
+                    document
+                    .getElementById("email")
+                    .value
+                    .trim();
 
 
-            const confirmPassword =
-                document.getElementById("confirmPassword").value;
+                const password =
+                    document
+                    .getElementById("password")
+                    .value;
 
 
-            if (password !== confirmPassword) {
+                const confirmPassword =
+                    document
+                    .getElementById("confirmPassword")
+                    .value;
 
-                alert("Passwords do not match.");
 
-                return;
+                if (
+                    password !==
+                    confirmPassword
+                ) {
+
+                    alert(
+                        "Passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Billing workspace created for " +
+                    username
+                );
 
             }
-
-
-            alert(
-                "Billing workspace created for " + username
-            );
-
-        });
+        );
 
 </script>
 
