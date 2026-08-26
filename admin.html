@@ -3,67 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Control Center</title>
+    <title>BillWise — Admin Control Center</title>
+
     <style>
         :root {
-            /* Palette: Obsidian Dark Base, Rich Violet & Metallic Gold */
-            --bg-base: #040208;
-            --bg-glass: rgba(15, 8, 28, 0.78);
-            --bg-glass-card: rgba(22, 12, 38, 0.7);
+            /* ==============================
+               BILLWISE — CREAM + VIOLET THEME
+               ============================== */
 
-            --violet-glow: #7c3aed;
-            --violet-light: #a78bfa;
-            --gold-primary: #f59e0b;
-            --gold-light: #fcd34d;
+            --bg-main: #f8f5ef;
+            --bg-soft: #f3eee7;
+            --cream: #fffdf9;
+            --cream-dark: #eee8df;
 
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --violet: #7357c9;
+            --violet-dark: #5b43aa;
+            --violet-light: #9a83df;
+            --violet-soft: #eee9fb;
+            --violet-border: rgba(115, 87, 201, 0.18);
+            --violet-glow: rgba(115, 87, 201, 0.20);
 
-            --border-violet: rgba(167, 139, 250, 0.16);
-            --border-gold: rgba(245, 158, 11, 0.35);
+            --text-main: #29242f;
+            --text-dark: #211c27;
+            --text-muted: #817987;
 
-            --success: #10b981;
-            --danger: #f43f5e;
-            --warning: #f59e0b;
+            --success: #3b9b73;
+            --success-soft: #e8f5ee;
+
+            --danger: #c85c6c;
+            --danger-soft: #f9e9ec;
+
+            --warning: #b88942;
+            --warning-soft: #f8efdf;
+
+            --shadow-soft: 0 12px 35px rgba(61, 46, 79, 0.08);
+            --shadow-card: 0 10px 30px rgba(61, 46, 79, 0.07);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
         }
 
-        /* CLEAN, CRISP TECHNICAL SMALL GRID & OVALLY AMBIENT GLOW */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: var(--bg-base);
-            background-image: 
-                /* Ambient Soft Glowing Orbs (Ovals) */
-                radial-gradient(ellipse 550px 380px at 12% 18%, rgba(124, 58, 237, 0.22) 0%, transparent 70%),
-                radial-gradient(ellipse 650px 420px at 88% 82%, rgba(245, 158, 11, 0.14) 0%, transparent 70%),
-                radial-gradient(ellipse 450px 300px at 50% 50%, rgba(167, 139, 250, 0.1) 0%, transparent 65%),
-                /* Precise Fine Small Grid Pattern (Clean & Non-Clumsy) */
-                linear-gradient(to right, rgba(167, 139, 250, 0.055) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(167, 139, 250, 0.055) 1px, transparent 1px),
-                /* Deep Foundation Gradient */
-                linear-gradient(135deg, #030206 0%, #0d051a 50%, #040209 100%);
-            background-size: auto, auto, auto, 20px 20px, 20px 20px, auto;
-            background-attachment: fixed;
+            background:
+                radial-gradient(
+                    circle 280px at 8% 12%,
+                    rgba(137, 110, 207, 0.18),
+                    transparent 72%
+                ),
+                radial-gradient(
+                    circle 360px at 94% 18%,
+                    rgba(185, 161, 226, 0.16),
+                    transparent 72%
+                ),
+                radial-gradient(
+                    circle 300px at 78% 88%,
+                    rgba(126, 101, 195, 0.14),
+                    transparent 72%
+                ),
+                radial-gradient(
+                    circle 220px at 30% 82%,
+                    rgba(218, 204, 235, 0.30),
+                    transparent 72%
+                ),
+                linear-gradient(
+                    135deg,
+                    #faf7f2 0%,
+                    #f6f1eb 48%,
+                    #fbf9f5 100%
+                );
+
             color: var(--text-main);
             min-height: 100vh;
-            display: flex;
             overflow-x: hidden;
         }
 
+        /* =================================
+           SOFT CIRCULAR BACKGROUND PATTERNS
+           NO GRID
+           ================================= */
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::before {
+            width: 430px;
+            height: 430px;
+            top: -170px;
+            left: 260px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(115, 87, 201, 0.09);
+
+            box-shadow:
+                0 0 0 55px rgba(115, 87, 201, 0.025),
+                0 0 0 110px rgba(115, 87, 201, 0.018),
+                0 0 0 170px rgba(115, 87, 201, 0.012);
+        }
+
+        body::after {
+            width: 520px;
+            height: 520px;
+            right: -220px;
+            bottom: -220px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(115, 87, 201, 0.10);
+
+            box-shadow:
+                0 0 0 55px rgba(115, 87, 201, 0.025),
+                0 0 0 115px rgba(115, 87, 201, 0.018),
+                0 0 0 180px rgba(115, 87, 201, 0.012);
+        }
+
+        /* Additional floating circles */
+
         .overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, transparent 35%, rgba(2, 1, 4, 0.7) 100%);
-            z-index: -1;
+            inset: 0;
             pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .overlay::before,
+        .overlay::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(115, 87, 201, 0.07);
+        }
+
+        .overlay::before {
+            width: 260px;
+            height: 260px;
+            top: 46%;
+            left: -120px;
+
+            box-shadow:
+                0 0 0 38px rgba(115, 87, 201, 0.018),
+                0 0 0 76px rgba(115, 87, 201, 0.012);
+        }
+
+        .overlay::after {
+            width: 320px;
+            height: 320px;
+            top: 5%;
+            right: -160px;
+
+            box-shadow:
+                0 0 0 42px rgba(115, 87, 201, 0.018),
+                0 0 0 86px rgba(115, 87, 201, 0.012);
         }
 
         .app-container {
@@ -72,485 +183,1470 @@
             min-height: 100vh;
         }
 
-        /* SIDEBAR WITH GLASS EFFECT & GOLD HIGHLIGHT */
+        /* ==============================
+           SIDEBAR
+           ============================== */
+
         aside {
             width: 260px;
-            background: var(--bg-glass);
+
+            background: rgba(255, 253, 249, 0.88);
+
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border-right: 1px solid var(--border-violet);
+
+            border-right: 1px solid rgba(115, 87, 201, 0.10);
+
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 2rem 1.5rem;
+
+            padding: 2rem 1.35rem;
+
             position: fixed;
             height: 100vh;
+
             z-index: 100;
-            box-shadow: 12px 0 35px rgba(0, 0, 0, 0.65);
+
+            box-shadow:
+                8px 0 35px rgba(71, 56, 89, 0.06);
+        }
+
+        .logo-area {
+            padding: 0 0.5rem;
         }
 
         .logo-area h2 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-            letter-spacing: 0.03em;
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            font-size: 1.55rem;
+            font-weight: 750;
+
+            color: var(--violet-dark);
+
+            margin-bottom: 2.2rem;
+
+            letter-spacing: -0.02em;
         }
 
         .nav-links {
             list-style: none;
+
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+
+            gap: 0.45rem;
+
             flex-grow: 1;
         }
 
         .nav-links li a {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 1rem;
+
+            gap: 0.9rem;
+
+            padding: 0.78rem 0.95rem;
+
             color: var(--text-muted);
+
             text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
+
+            border-radius: 13px;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+
+            font-weight: 520;
+
             border: 1px solid transparent;
         }
 
-        .nav-links li.active a, .nav-links li a:hover {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(245, 158, 11, 0.15));
-            color: #ffffff;
-            border-color: var(--border-gold);
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4), inset 0 0 10px rgba(245, 158, 11, 0.1);
+        .nav-links li a:hover {
+            background: rgba(115, 87, 201, 0.06);
+
+            color: var(--violet-dark);
+
+            transform: translateX(2px);
         }
 
+        .nav-links li.active a {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(115, 87, 201, 0.13),
+                    rgba(154, 131, 223, 0.07)
+                );
+
+            color: var(--violet-dark);
+
+            border-color: rgba(115, 87, 201, 0.14);
+
+            box-shadow:
+                0 7px 20px rgba(115, 87, 201, 0.09);
+        }
+
+        .nav-links li.active a::before {
+            content: "";
+
+            width: 4px;
+            height: 22px;
+
+            background: var(--violet);
+
+            border-radius: 10px;
+
+            margin-left: -0.95rem;
+        }
+
+        /* ==============================
+           ROLE SWITCH
+           ============================== */
+
         .role-switch {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(245, 158, 11, 0.08));
-            padding: 0.85rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-gold);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(115, 87, 201, 0.09),
+                    rgba(255, 253, 249, 0.8)
+                );
+
+            padding: 1rem;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(115, 87, 201, 0.12);
+
             text-align: center;
-            box-shadow: inset 0 0 15px rgba(124, 58, 237, 0.1);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.8),
+                0 8px 25px rgba(72, 57, 89, 0.05);
+        }
+
+        .role-switch small {
+            color: var(--text-muted);
         }
 
         .role-switch a {
             display: block;
-            margin-top: 0.3rem;
-            color: var(--gold-light);
+
+            margin-top: 0.35rem;
+
+            color: var(--violet-dark);
+
             text-decoration: none;
-            font-weight: 600;
+
+            font-weight: 650;
+
             font-size: 0.85rem;
-            transition: opacity 0.2s;
+
+            transition: opacity 0.2s ease;
         }
 
         .role-switch a:hover {
-            opacity: 0.85;
-            text-decoration: underline;
+            opacity: 0.72;
         }
+
+        /* ==============================
+           MAIN
+           ============================== */
 
         main {
             margin-left: 260px;
+
             flex-grow: 1;
+
             padding: 2.5rem;
+
             overflow-y: auto;
+
+            min-width: 0;
         }
 
-        /* HEADER WITH SUBTLE GOLD & VIOLET RIM LIGHT */
+        /* ==============================
+           HEADER
+           ============================== */
+
         .header-bar {
             display: flex;
+
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2.5rem;
-            background: var(--bg-glass-card);
+
+            margin-bottom: 2.3rem;
+
+            background:
+                rgba(255, 253, 249, 0.82);
+
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            padding: 1.25rem 1.75rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-violet);
+
+            padding: 1.35rem 1.7rem;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(115, 87, 201, 0.10);
+
             position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+
+            box-shadow:
+                var(--shadow-soft),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+
+            overflow: hidden;
         }
 
         .header-bar::before {
-            content: '';
+            content: "";
+
             position: absolute;
-            top: -1px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--violet-glow), var(--gold-primary), transparent);
+
+            width: 230px;
+            height: 230px;
+
+            right: -100px;
+            top: -150px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(115, 87, 201, 0.10);
+
+            box-shadow:
+                0 0 0 30px rgba(115, 87, 201, 0.018),
+                0 0 0 60px rgba(115, 87, 201, 0.012);
         }
 
-        .user-welcome h1 { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
-        .user-welcome p { color: var(--text-muted); font-size: 0.875rem; margin-top: 0.2rem; }
+        .user-welcome {
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-welcome h1 {
+            font-size: 1.55rem;
+
+            font-weight: 720;
+
+            color: var(--text-dark);
+
+            letter-spacing: -0.025em;
+        }
+
+        .user-welcome p {
+            color: var(--text-muted);
+
+            font-size: 0.875rem;
+
+            margin-top: 0.3rem;
+        }
+
+        /* ==============================
+           SECTION ANIMATION
+           ============================== */
 
         .view-section {
             display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+            animation:
+                fadeIn 0.35s ease;
         }
 
-        .view-section.active { display: block; }
+        .view-section.active {
+            display: block;
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* ==============================
+           DASHBOARD GRID
+           ============================== */
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 1.35rem;
+
+            margin-bottom: 1.8rem;
         }
 
-        /* FROSTED GLASS CARDS */
+        /* ==============================
+           CARDS
+           ============================== */
+
         .card {
-            background: var(--bg-glass-card);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border-violet);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+            background:
+                rgba(255, 253, 249, 0.82);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(115, 87, 201, 0.09);
+
+            border-radius: 20px;
+
+            padding: 1.55rem;
+
+            box-shadow:
+                var(--shadow-card),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+
             position: relative;
+
             overflow: hidden;
+        }
+
+        /* Subtle circular detail inside cards */
+
+        .card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            right: -75px;
+            bottom: -75px;
+
+            border: 1px solid rgba(115, 87, 201, 0.06);
+
+            box-shadow:
+                0 0 0 25px rgba(115, 87, 201, 0.012),
+                0 0 0 50px rgba(115, 87, 201, 0.008);
+
+            pointer-events: none;
         }
 
         .card:hover {
-            border-color: var(--border-gold);
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.3), 0 0 20px rgba(245, 158, 11, 0.15);
+
+            border-color:
+                rgba(115, 87, 201, 0.18);
+
+            box-shadow:
+                0 18px 40px rgba(70, 54, 88, 0.09),
+                0 4px 15px rgba(115, 87, 201, 0.05);
         }
 
         .card h3 {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
+
             color: var(--text-muted);
-            margin-bottom: 0.75rem;
+
+            margin-bottom: 0.8rem;
+
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
+
+            letter-spacing: 0.09em;
+
+            font-weight: 650;
         }
 
-        .card .value { font-size: 1.85rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+        .card .value {
+            font-size: 1.9rem;
+
+            font-weight: 740;
+
+            margin-bottom: 0.5rem;
+
+            color: var(--text-dark);
+
+            letter-spacing: -0.025em;
+        }
+
+        /* ==============================
+           BADGES
+           ============================== */
 
         .badge {
             display: inline-block;
-            padding: 0.35rem 0.85rem;
+
+            padding: 0.38rem 0.82rem;
+
             border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
+
+            font-size: 0.72rem;
+
+            font-weight: 650;
+
             letter-spacing: 0.02em;
         }
 
-        .badge.active { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .badge.warning { background: rgba(245, 158, 11, 0.2); color: var(--gold-light); border: 1px solid var(--border-gold); }
+        .badge.active {
+            background: var(--success-soft);
 
-        /* TABLES */
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 1rem;
-            background: var(--bg-glass-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-violet);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            color: var(--success);
+
+            border:
+                1px solid rgba(59, 155, 115, 0.16);
         }
 
-        th, td {
-            padding: 1.1rem 1.25rem;
+        .badge.warning {
+            background: var(--violet-soft);
+
+            color: var(--violet-dark);
+
+            border:
+                1px solid rgba(115, 87, 201, 0.15);
+        }
+
+        /* ==============================
+           TABLES
+           ============================== */
+
+        table {
+            width: 100%;
+
+            border-collapse: separate;
+
+            border-spacing: 0;
+
+            margin-top: 1rem;
+
+            background:
+                rgba(255, 253, 249, 0.86);
+
+            border-radius: 19px;
+
+            overflow: hidden;
+
+            border:
+                1px solid rgba(115, 87, 201, 0.09);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                var(--shadow-card),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+
+        th,
+        td {
+            padding: 1.05rem 1.25rem;
+
             text-align: left;
-            border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+
+            border-bottom:
+                1px solid rgba(115, 87, 201, 0.07);
         }
 
         th {
-            background: linear-gradient(90deg, rgba(124, 58, 237, 0.3), rgba(245, 158, 11, 0.12));
-            font-weight: 600;
-            color: #e2e8f0;
-            font-size: 0.85rem;
-            letter-spacing: 0.04em;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(115, 87, 201, 0.09),
+                    rgba(154, 131, 223, 0.035)
+                );
+
+            font-weight: 650;
+
+            color: var(--violet-dark);
+
+            font-size: 0.76rem;
+
+            letter-spacing: 0.06em;
+
             text-transform: uppercase;
         }
 
-        td { font-size: 0.9rem; color: var(--text-main); }
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background: rgba(124, 58, 237, 0.1); }
+        td {
+            font-size: 0.9rem;
 
-        /* BUTTONS WITH VIOLET & GOLD GRADIENTS */
-        .btn {
-            background: linear-gradient(135deg, var(--violet-glow), #6d28d9);
-            color: white;
-            border: none;
-            padding: 0.65rem 1.35rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+
+            background: transparent;
         }
 
-        .btn:hover { 
-            background: linear-gradient(135deg, #8b5cf6, var(--violet-glow));
-            box-shadow: 0 6px 22px rgba(124, 58, 237, 0.6);
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background:
+                rgba(115, 87, 201, 0.035);
+        }
+
+        /* ==============================
+           BUTTONS
+           ============================== */
+
+        .btn {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--violet),
+                    var(--violet-dark)
+                );
+
+            color: white;
+
+            border: none;
+
+            padding: 0.67rem 1.3rem;
+
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            font-weight: 650;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+            font-size: 0.85rem;
+
+            box-shadow:
+                0 7px 18px rgba(115, 87, 201, 0.18);
+        }
+
+        .btn:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #8066d2,
+                    var(--violet)
+                );
+
+            box-shadow:
+                0 10px 24px rgba(115, 87, 201, 0.25);
+
             transform: translateY(-1px);
         }
 
-        .btn-outline { 
-            background: rgba(245, 158, 11, 0.08); 
-            border: 1px solid var(--border-gold); 
-            color: var(--gold-light); 
+        .btn-outline {
+            background:
+                rgba(115, 87, 201, 0.045);
+
+            border:
+                1px solid rgba(115, 87, 201, 0.18);
+
+            color: var(--violet-dark);
+
             box-shadow: none;
-        }
-        .btn-outline:hover { 
-            background: rgba(245, 158, 11, 0.2); 
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
         }
 
-        .btn-danger { 
-            background: rgba(244, 63, 94, 0.15); 
-            border: 1px solid rgba(244, 63, 94, 0.3); 
-            color: #fb7185; 
+        .btn-outline:hover {
+            background:
+                rgba(115, 87, 201, 0.10);
+
+            color: var(--violet-dark);
+
+            box-shadow:
+                0 6px 18px rgba(115, 87, 201, 0.08);
+        }
+
+        .btn-danger {
+            background:
+                var(--danger-soft);
+
+            border:
+                1px solid rgba(200, 92, 108, 0.18);
+
+            color: var(--danger);
+
             box-shadow: none;
         }
-        .btn-danger:hover { 
-            background: rgba(244, 63, 94, 0.25); 
-            border-color: rgba(244, 63, 94, 0.5);
+
+        .btn-danger:hover {
+            background:
+                rgba(200, 92, 108, 0.12);
+
+            border-color:
+                rgba(200, 92, 108, 0.25);
+
+            color: var(--danger);
+
+            box-shadow:
+                0 6px 18px rgba(200, 92, 108, 0.08);
+        }
+
+        /* ==============================
+           PAGE HEADINGS
+           ============================== */
+
+        section h2 {
+            color: var(--text-dark);
+
+            font-size: 1.35rem;
+
+            letter-spacing: -0.02em;
+
+            font-weight: 720;
+        }
+
+        section > div > p {
+            color: var(--text-muted);
+        }
+
+        /* ==============================
+           RESPONSIVE
+           ============================== */
+
+        @media (max-width: 900px) {
+            aside {
+                width: 220px;
+            }
+
+            main {
+                margin-left: 220px;
+
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                display: block;
+            }
+
+            .app-container {
+                display: block;
+            }
+
+            aside {
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+
+                min-height: auto;
+
+                padding: 1.3rem;
+            }
+
+            .logo-area h2 {
+                margin-bottom: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 0.25rem;
+            }
+
+            main {
+                margin-left: 0;
+
+                padding: 1.2rem;
+            }
+
+            .header-bar {
+                align-items: flex-start;
+
+                gap: 1rem;
+
+                flex-direction: column;
+            }
+
+            table {
+                display: block;
+
+                overflow-x: auto;
+
+                white-space: nowrap;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="overlay"></div>
 
     <div class="app-container">
-        <!-- Sidebar Navigation -->
+
+        <!-- ==============================
+             SIDEBAR
+             ============================== -->
+
         <aside>
+
             <div>
+
                 <div class="logo-area">
                     <h2>Admin Control</h2>
                 </div>
+
                 <ul class="nav-links" id="adminNavList">
-                    <li class="active"><a href="#" data-target="admin-overview">📊 <span>Dashboard Overview</span></a></li>
-                    <li><a href="#" data-target="admin-plans">💳 <span>Plans Management</span></a></li>
-                    <li><a href="#" data-target="admin-customers">👥 <span>View Customers</span></a></li>
-                    <li><a href="#" data-target="admin-subscriptions">📦 <span>View Subscriptions</span></a></li>
-                    <li><a href="#" data-target="admin-invoices">📄 <span>View Invoices</span></a></li>
+
+                    <li class="active">
+                        <a href="#" data-target="admin-overview">
+                            📊
+                            <span>Dashboard Overview</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-target="admin-plans">
+                            💳
+                            <span>Plans Management</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-target="admin-customers">
+                            👥
+                            <span>View Customers</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-target="admin-subscriptions">
+                            📦
+                            <span>View Subscriptions</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-target="admin-invoices">
+                            📄
+                            <span>View Invoices</span>
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
-            
+
             <div>
+
                 <div class="role-switch">
-                    <small style="color: var(--text-muted);">Switch Panel</small>
-                    <a href="user-dashboard.html">Go to User View →</a>
+
+                    <small>Switch Panel</small>
+
+                    <a href="user-dashboard.html">
+                        Go to User View →
+                    </a>
+
                 </div>
-                <ul class="nav-links" style="margin-top: 1rem;">
-                    <li><a href="#" onclick="logoutAdmin()">🚪 <span>Logout</span></a></li>
+
+                <ul
+                    class="nav-links"
+                    style="margin-top: 1rem;"
+                >
+
+                    <li>
+                        <a
+                            href="#"
+                            onclick="logoutAdmin()"
+                        >
+                            🚪
+                            <span>Logout</span>
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
         </aside>
 
-        <!-- Main Workspace -->
+
+        <!-- ==============================
+             MAIN WORKSPACE
+             ============================== -->
+
         <main>
+
+            <!-- HEADER -->
+
             <header class="header-bar">
+
                 <div class="user-welcome">
-                    <h1>Welcome, Master Administrator</h1>
-                    <p>Global financial controls, plan creation, and audit metrics.</p>
+
+                    <h1>
+                        Welcome, Master Administrator
+                    </h1>
+
+                    <p>
+                        Global financial controls, plan creation, and audit metrics.
+                    </p>
+
                 </div>
+
                 <div>
-                    <span class="badge warning">Superuser Auth</span>
+                    <span class="badge warning">
+                        Superuser Auth
+                    </span>
                 </div>
+
             </header>
 
-            <!-- 1. Dashboard Overview -->
-            <section id="admin-overview" class="view-section active">
+
+            <!-- ==============================
+                 1. DASHBOARD OVERVIEW
+                 ============================== -->
+
+            <section
+                id="admin-overview"
+                class="view-section active"
+            >
+
                 <div class="dashboard-grid">
+
                     <div class="card">
-                        <h3>Total Active Users</h3>
-                        <div class="value">1,492</div>
-                        <p style="color: var(--success); font-size: 0.85rem; font-weight: 500;">+12% from last month</p>
+
+                        <h3>
+                            Total Active Users
+                        </h3>
+
+                        <div class="value">
+                            1,492
+                        </div>
+
+                        <p
+                            style="
+                                color: var(--success);
+                                font-size: 0.85rem;
+                                font-weight: 500;
+                            "
+                        >
+                            +12% from last month
+                        </p>
+
                     </div>
+
+
                     <div class="card">
-                        <h3>Recurring Revenue</h3>
-                        <div class="value" style="color: var(--gold-light); text-shadow: 0 0 15px rgba(245,158,11,0.4);">$73,108</div>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">ARR calculated output</p>
+
+                        <h3>
+                            Recurring Revenue
+                        </h3>
+
+                        <div
+                            class="value"
+                            style="color: var(--violet-dark);"
+                        >
+                            $73,108
+                        </div>
+
+                        <p
+                            style="
+                                color: var(--text-muted);
+                                font-size: 0.85rem;
+                            "
+                        >
+                            ARR calculated output
+                        </p>
+
                     </div>
+
+
                     <div class="card">
-                        <h3>Active Plans</h3>
-                        <div class="value">4 Configured</div>
-                        <p style="color: var(--text-muted); font-size: 0.85rem;">System operational</p>
+
+                        <h3>
+                            Active Plans
+                        </h3>
+
+                        <div class="value">
+                            4 Configured
+                        </div>
+
+                        <p
+                            style="
+                                color: var(--text-muted);
+                                font-size: 0.85rem;
+                            "
+                        >
+                            System operational
+                        </p>
+
                     </div>
+
                 </div>
+
             </section>
 
-            <!-- 2. Plans Management -->
-            <section id="admin-plans" class="view-section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+
+            <!-- ==============================
+                 2. PLANS MANAGEMENT
+                 ============================== -->
+
+            <section
+                id="admin-plans"
+                class="view-section"
+            >
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-bottom:1.5rem;
+                        gap:1rem;
+                    "
+                >
+
                     <div>
-                        <h2>View All Plans</h2>
-                        <p style="color: var(--text-muted);">Create, edit, or archive system pricing configurations.</p>
+
+                        <h2>
+                            View All Plans
+                        </h2>
+
+                        <p
+                            style="
+                                color:var(--text-muted);
+                                margin-top:0.3rem;
+                            "
+                        >
+                            Create, edit, or archive system pricing configurations.
+                        </p>
+
                     </div>
-                    <button class="btn" onclick="alert('Open Modal: Create New Plan')">+ Create Plan</button>
+
+                    <button
+                        class="btn"
+                        onclick="alert('Open Modal: Create New Plan')"
+                    >
+                        + Create Plan
+                    </button>
+
                 </div>
+
+
                 <table>
+
                     <thead>
+
                         <tr>
-                            <th>Plan Name</th>
-                            <th>Pricing Tier</th>
-                            <th>Active Subscribers</th>
-                            <th>Actions</th>
+
+                            <th>
+                                Plan Name
+                            </th>
+
+                            <th>
+                                Pricing Tier
+                            </th>
+
+                            <th>
+                                Active Subscribers
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
                         </tr>
+
                     </thead>
+
+
                     <tbody>
+
                         <tr>
-                            <td>Starter Plan</td>
-                            <td>$19 / mo</td>
-                            <td>410</td>
+
                             <td>
-                                <button class="btn btn-outline" style="padding: 0.35rem 0.75rem;" onclick="alert('Edit Plan modal triggered')">Edit Plan</button>
-                                <button class="btn btn-danger" style="padding: 0.35rem 0.75rem;" onclick="alert('Plan archived/deactivated')">Deactivate</button>
+                                Starter Plan
                             </td>
-                        </tr>
-                        <tr>
-                            <td>Pro Enterprise</td>
-                            <td>$49 / mo</td>
-                            <td>820</td>
+
                             <td>
-                                <button class="btn btn-outline" style="padding: 0.35rem 0.75rem;" onclick="alert('Edit Plan modal triggered')">Edit Plan</button>
-                                <button class="btn btn-danger" style="padding: 0.35rem 0.75rem;" onclick="alert('Plan archived/deactivated')">Deactivate</button>
+                                $19 / mo
                             </td>
+
+                            <td>
+                                410
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn btn-outline"
+                                    style="
+                                        padding:0.35rem 0.75rem;
+                                        margin-right:0.35rem;
+                                    "
+                                    onclick="alert('Edit Plan modal triggered')"
+                                >
+                                    Edit Plan
+                                </button>
+
+                                <button
+                                    class="btn btn-danger"
+                                    style="padding:0.35rem 0.75rem;"
+                                    onclick="alert('Plan archived/deactivated')"
+                                >
+                                    Deactivate
+                                </button>
+
+                            </td>
+
                         </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Pro Enterprise
+                            </td>
+
+                            <td>
+                                $49 / mo
+                            </td>
+
+                            <td>
+                                820
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn btn-outline"
+                                    style="
+                                        padding:0.35rem 0.75rem;
+                                        margin-right:0.35rem;
+                                    "
+                                    onclick="alert('Edit Plan modal triggered')"
+                                >
+                                    Edit Plan
+                                </button>
+
+                                <button
+                                    class="btn btn-danger"
+                                    style="padding:0.35rem 0.75rem;"
+                                    onclick="alert('Plan archived/deactivated')"
+                                >
+                                    Deactivate
+                                </button>
+
+                            </td>
+
+                        </tr>
+
                     </tbody>
+
                 </table>
+
             </section>
 
-            <!-- 3. View Customers -->
-            <section id="admin-customers" class="view-section">
-                <div style="margin-bottom: 1.5rem;">
-                    <h2>View Customers</h2>
-                    <p style="color: var(--text-muted);">Active platform registered customer records.</p>
+
+            <!-- ==============================
+                 3. CUSTOMERS
+                 ============================== -->
+
+            <section
+                id="admin-customers"
+                class="view-section"
+            >
+
+                <div style="margin-bottom:1.5rem;">
+
+                    <h2>
+                        View Customers
+                    </h2>
+
+                    <p style="margin-top:0.3rem;">
+                        Active platform registered customer records.
+                    </p>
+
                 </div>
+
+
                 <table>
+
                     <thead>
+
                         <tr>
-                            <th>Customer Name</th>
-                            <th>Email</th>
-                            <th>Joined Date</th>
-                            <th>Status</th>
+
+                            <th>
+                                Customer Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Joined Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
                         </tr>
+
                     </thead>
+
+
                     <tbody>
+
                         <tr>
-                            <td>Sree</td>
-                            <td>sree@example.com</td>
-                            <td>Jan 12, 2026</td>
-                            <td><span class="badge active">Active</span></td>
+
+                            <td>
+                                Sree
+                            </td>
+
+                            <td>
+                                sree@example.com
+                            </td>
+
+                            <td>
+                                Jan 12, 2026
+                            </td>
+
+                            <td>
+                                <span class="badge active">
+                                    Active
+                                </span>
+                            </td>
+
                         </tr>
+
+
                         <tr>
-                            <td>Sriya</td>
-                            <td>Sriya.m@example.com</td>
-                            <td>Feb 04, 2026</td>
-                            <td><span class="badge active">Active</span></td>
+
+                            <td>
+                                Sriya
+                            </td>
+
+                            <td>
+                                Sriya.m@example.com
+                            </td>
+
+                            <td>
+                                Feb 04, 2026
+                            </td>
+
+                            <td>
+                                <span class="badge active">
+                                    Active
+                                </span>
+                            </td>
+
                         </tr>
+
                     </tbody>
+
                 </table>
+
             </section>
 
-            <!-- 4. View Subscriptions -->
-            <section id="admin-subscriptions" class="view-section">
-                <div style="margin-bottom: 1.5rem;">
-                    <h2>View Subscriptions</h2>
-                    <p style="color: var(--text-muted);">Active tracking subscriptions across all tiers.</p>
+
+            <!-- ==============================
+                 4. SUBSCRIPTIONS
+                 ============================== -->
+
+            <section
+                id="admin-subscriptions"
+                class="view-section"
+            >
+
+                <div style="margin-bottom:1.5rem;">
+
+                    <h2>
+                        View Subscriptions
+                    </h2>
+
+                    <p style="margin-top:0.3rem;">
+                        Active tracking subscriptions across all tiers.
+                    </p>
+
                 </div>
+
+
                 <table>
+
                     <thead>
+
                         <tr>
-                            <th>Subscription ID</th>
-                            <th>Customer</th>
-                            <th>Plan</th>
-                            <th>Renewal Date</th>
+
+                            <th>
+                                Subscription ID
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Plan
+                            </th>
+
+                            <th>
+                                Renewal Date
+                            </th>
+
                         </tr>
+
                     </thead>
+
+
                     <tbody>
+
                         <tr>
-                            <td>#SUB-9941</td>
-                            <td>sree</td>
-                            <td>Pro Enterprise</td>
-                            <td>Aug 28, 2026</td>
+
+                            <td>
+                                #SUB-9941
+                            </td>
+
+                            <td>
+                                sree
+                            </td>
+
+                            <td>
+                                Pro Enterprise
+                            </td>
+
+                            <td>
+                                Aug 28, 2026
+                            </td>
+
                         </tr>
+
+
                         <tr>
-                            <td>#SUB-8812</td>
-                            <td>Sriya</td>
-                            <td>Ultimate Scale</td>
-                            <td>Sep 02, 2026</td>
+
+                            <td>
+                                #SUB-8812
+                            </td>
+
+                            <td>
+                                Sriya
+                            </td>
+
+                            <td>
+                                Ultimate Scale
+                            </td>
+
+                            <td>
+                                Sep 02, 2026
+                            </td>
+
                         </tr>
+
                     </tbody>
+
                 </table>
+
             </section>
 
-            <!-- 5. View Invoices -->
-            <section id="admin-invoices" class="view-section">
-                <div style="margin-bottom: 1.5rem;">
-                    <h2>View Invoices</h2>
-                    <p style="color: var(--text-muted);">Global ledger logs and generated bills.</p>
+
+            <!-- ==============================
+                 5. INVOICES
+                 ============================== -->
+
+            <section
+                id="admin-invoices"
+                class="view-section"
+            >
+
+                <div style="margin-bottom:1.5rem;">
+
+                    <h2>
+                        View Invoices
+                    </h2>
+
+                    <p style="margin-top:0.3rem;">
+                        Global ledger logs and generated bills.
+                    </p>
+
                 </div>
+
+
                 <table>
+
                     <thead>
+
                         <tr>
-                            <th>Invoice Ref</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                            <th>Status</th>
+
+                            <th>
+                                Invoice Ref
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
                         </tr>
+
                     </thead>
+
+
                     <tbody>
+
                         <tr>
-                            <td>#INV-2026-07</td>
-                            <td>Sree</td>
-                            <td>$49.00</td>
-                            <td><span class="badge active">Paid</span></td>
+
+                            <td>
+                                #INV-2026-07
+                            </td>
+
+                            <td>
+                                Sree
+                            </td>
+
+                            <td>
+                                $49.00
+                            </td>
+
+                            <td>
+                                <span class="badge active">
+                                    Paid
+                                </span>
+                            </td>
+
                         </tr>
+
+
                         <tr>
-                            <td>#INV-2026-06</td>
-                            <td>Sriya</td>
-                            <td>$99.00</td>
-                            <td><span class="badge active">Paid</span></td>
+
+                            <td>
+                                #INV-2026-06
+                            </td>
+
+                            <td>
+                                Sriya
+                            </td>
+
+                            <td>
+                                $99.00
+                            </td>
+
+                            <td>
+                                <span class="badge active">
+                                    Paid
+                                </span>
+                            </td>
+
                         </tr>
+
                     </tbody>
+
                 </table>
+
             </section>
+
         </main>
+
     </div>
 
-    <script>
-        const adminLinks = document.querySelectorAll('#adminNavList li a');
-        adminLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('data-target');
-                adminLinks.forEach(l => l.parentElement.classList.remove('active'));
-                link.parentElement.classList.add('active');
 
-                document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
-                document.getElementById(targetId).classList.add('active');
-            });
+    <!-- ==============================
+         JAVASCRIPT
+         ============================== -->
+
+    <script>
+
+        const adminLinks =
+            document.querySelectorAll(
+                '#adminNavList li a'
+            );
+
+
+        adminLinks.forEach(link => {
+
+            link.addEventListener(
+                'click',
+                (e) => {
+
+                    e.preventDefault();
+
+                    const targetId =
+                        link.getAttribute(
+                            'data-target'
+                        );
+
+
+                    adminLinks.forEach(l => {
+
+                        l.parentElement
+                            .classList
+                            .remove('active');
+
+                    });
+
+
+                    link.parentElement
+                        .classList
+                        .add('active');
+
+
+                    document
+                        .querySelectorAll(
+                            '.view-section'
+                        )
+                        .forEach(sec => {
+
+                            sec.classList
+                                .remove('active');
+
+                        });
+
+
+                    document
+                        .getElementById(targetId)
+                        .classList
+                        .add('active');
+
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
+                }
+            );
+
         });
 
+
         function logoutAdmin() {
-            if(confirm("Securely sign out of Admin panel?")) alert("Logged out.");
+
+            if (
+                confirm(
+                    "Securely sign out of Admin panel?"
+                )
+            ) {
+
+                alert("Logged out.");
+
+            }
+
         }
+
     </script>
+
 </body>
 </html>
